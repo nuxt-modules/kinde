@@ -1,8 +1,8 @@
 {
-  "name": "my-module",
+  "name": "@nuxtjs/kinde",
   "version": "1.0.0",
-  "description": "My new Nuxt module",
-  "repository": "your-org/my-module",
+  "description": "Nuxt integration for Kinde authentication",
+  "repository": "nuxt-modules/kinde",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -21,7 +21,7 @@
     "prepack": "nuxt-module-build build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
-    "dev:prepare": "nuxt-module-build build --stub && nuxi prepare playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "test": "vitest run",
@@ -29,7 +29,8 @@
   },
   "dependencies": {
     "@kinde-oss/kinde-typescript-sdk": "^2.2.1",
-    "@nuxt/kit": "^3.7.4"
+    "@nuxt/kit": "^3.7.4",
+    "defu": "^6.1.2"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
