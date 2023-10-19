@@ -35,6 +35,7 @@ export default defineNuxtModule<ModuleOptions>({
       clientSecret: '',
       redirectURL: '',
       logoutRedirectURL: '',
+      postLoginRedirectURL: '',
     })
 
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
