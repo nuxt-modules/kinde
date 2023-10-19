@@ -14,6 +14,7 @@ export interface ModuleOptions {
     callback?: string
     login?: string
     logout?: string
+    register?: string
   }
 }
 
@@ -55,6 +56,12 @@ export default defineNuxtModule<ModuleOptions>({
       handler:
         options.handlers?.login ||
         resolver.resolve('./runtime/server/api/login.get'),
+    })
+    addServerHandler({
+      route: '/api/register',
+      handler:
+        options.handlers?.register ||
+        resolver.resolve('./runtime/server/api/register.get'),
     })
     addServerHandler({
       route: '/api/logout',
