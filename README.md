@@ -34,6 +34,17 @@ export default defineNuxtConfig({
 })
 ```
 
+Add the following configuration to your `.env` file replacing the values in `< >` with your Kinde credentials.
+
+```bash
+NUXT_KINDE_AUTH_DOMAIN="https://<your_kinde_subdomain>.kinde.com"
+NUXT_KINDE_CLIENT_ID="<your_kinde_client_id>"
+NUXT_KINDE_CLIENT_SECRET="<your_kinde_client_secret>"
+NUXT_KINDE_REDIRECT_URL="http://localhost:3000/api/callback"
+NUXT_KINDE_LOGOUT_REDIRECT_URL="http://localhost:3000"
+NUXT_KINDE_POST_LOGIN_REDIRECT_URL="http://localhost:3000/dashboard"
+```
+
 That's it! You can now use Nuxt Kinde in your Nuxt app ✨
 
 ## Development
