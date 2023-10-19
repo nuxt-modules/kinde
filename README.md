@@ -1,3 +1,5 @@
+![nuxt-kinde-social-card](https://github.com/nuxt-modules/kinde/assets/904724/b738708c-3d5c-4d72-b233-22488678cb6e)
+
 # Nuxt Kinde
 
 [![npm version][npm-version-src]][npm-version-href]
