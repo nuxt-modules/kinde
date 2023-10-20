@@ -29,6 +29,9 @@ jobs:
       - name: 🛠 Build project
         run: pnpm prepack
 
+      - name: 🛝 Build playground
+        run: pnpm dev:build
+
       - name: 👀 Lint project
         run: pnpm lint
 
