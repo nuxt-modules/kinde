@@ -27,7 +27,7 @@ jobs:
         run: pnpm dev:prepare
 
       - name: 🛠 Build project
-        run: pnpm build
+        run: pnpm prepack
 
       - name: 👀 Lint project
         run: pnpm lint
