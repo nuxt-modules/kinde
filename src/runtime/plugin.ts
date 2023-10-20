@@ -8,8 +8,13 @@ import {
 export default defineNuxtPlugin(async () => {
   const state = useState<{ loggedIn: boolean }>(shallowRef)
   if (import.meta.server) {
+    const isLoggedIn = await useRequestEvent().context.kinde.isAuthenticated()
+
     state.value = {
-      loggedIn: await useRequestEvent().context.kinde.isAuthenticated(),
+      loggedIn: isLoggedIn,
+      user: isLoggedIn
+        ? await useRequestEvent().context.kinde.getUserProfile()
+        : null,
     }
   }
 

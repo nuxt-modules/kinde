@@ -13,6 +13,8 @@ const clientOptions: ACClientOptions = {
   clientSecret: config.kinde.clientSecret,
   logoutRedirectURL: config.kinde.logoutRedirectURL,
   redirectURL: config.kinde.redirectURL,
+  framework: 'Nuxt',
+  frameworkVersion: '0.1.0',
 }
 
 export const kindeClient = createKindeServerClient(
