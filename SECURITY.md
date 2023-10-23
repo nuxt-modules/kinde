@@ -1,7 +1,7 @@
 <p align="center">
   <a href="https://kinde.com" target="_blank" rel="noopener noreferrer">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="kinde_logo_dark.jpg">
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/kinde-oss/.github/main/kinde_logo_dark.jpg">
       <img src="https://raw.githubusercontent.com/kinde-oss/.github/main/kinde_logo_light.jpg" height="100">
     </picture>
   </a>
