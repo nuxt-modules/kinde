@@ -47,6 +47,20 @@ NUXT_KINDE_LOGOUT_REDIRECT_URL="http://localhost:3000"
 NUXT_KINDE_POST_LOGIN_REDIRECT_URL="http://localhost:3000/dashboard"
 ```
 
+You can alternatively set any of these values except the client secret in your `nuxt.config` file:
+
+```ts
+export default defineNuxtConfig({
+  kinde: {
+    authDomain: 'https://<your_kinde_subdomain>.kinde.com',
+    clientId: '<your_kinde_client_id>',
+    redirectURL: 'http://localhost:3000/api/callback',
+    logoutRedirectURL: 'http://localhost:3000',
+    postLoginRedirectURL: 'http://localhost:3000/dashboard',
+  }
+})
+```
+
 That's it! You can now use Nuxt Kinde in your Nuxt app ✨
 
 ## Development

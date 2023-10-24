@@ -18,6 +18,11 @@ export interface ModuleOptions {
     logout?: string
     register?: string
   }
+  authDomain?: string
+  clientId?: string
+  redirectURL?: string
+  logoutRedirectURL?: string
+  postLoginRedirectURL?: string
 }
 
 const resolver = createResolver(import.meta.url)
@@ -30,15 +35,20 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options of the Nuxt module
   defaults: {
     middleware: true,
+    authDomain: '',
+    clientId: '',
+    redirectURL: '',
+    logoutRedirectURL: '',
+    postLoginRedirectURL: '',
   },
   setup(options, nuxt) {
     nuxt.options.runtimeConfig.kinde = defu(nuxt.options.runtimeConfig.kinde, {
-      authDomain: '',
-      clientId: '',
+      authDomain: options.authDomain,
+      clientId: options.clientId,
+      redirectURL: options.redirectURL,
+      logoutRedirectURL: options.logoutRedirectURL,
+      postLoginRedirectURL: options.postLoginRedirectURL,
       clientSecret: '',
-      redirectURL: '',
-      logoutRedirectURL: '',
-      postLoginRedirectURL: '',
     })
 
     nuxt.options.nitro.virtual ||= {}
