@@ -4,7 +4,6 @@ import {
   addPlugin,
   createResolver,
   addRouteMiddleware,
-  addTemplate,
 } from '@nuxt/kit'
 import { defu } from 'defu'
 import { version } from '../package.json'
