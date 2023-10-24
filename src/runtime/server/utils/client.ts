@@ -1,9 +1,8 @@
-import {
-  createKindeServerClient,
-  GrantType,
-} from '@kinde-oss/kinde-typescript-sdk'
+import { createKindeServerClient, GrantType } from '@kinde-oss/kinde-typescript-sdk'
 import type { ACClient } from '@kinde-oss/kinde-typescript-sdk'
 import { useRuntimeConfig } from '#imports'
+
+import { version as frameworkVersion } from '#build/kinde-version.mjs'
 
 let kindeClient: ACClient
 
@@ -18,7 +17,7 @@ export const getKindeClient = () => {
     logoutRedirectURL: config.kinde.logoutRedirectURL,
     redirectURL: config.kinde.redirectURL,
     framework: 'Nuxt',
-    frameworkVersion: '0.1.0',
+    frameworkVersion,
   })
 
   return kindeClient

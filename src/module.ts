@@ -4,8 +4,10 @@ import {
   addPlugin,
   createResolver,
   addRouteMiddleware,
+  addTemplate,
 } from '@nuxt/kit'
 import { defu } from 'defu'
+import { version } from '../package.json'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -23,6 +25,7 @@ export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: '@nuxtjs/kinde',
     configKey: 'kinde',
+    version
   },
   // Default configuration options of the Nuxt module
   defaults: {
@@ -36,6 +39,11 @@ export default defineNuxtModule<ModuleOptions>({
       redirectURL: '',
       logoutRedirectURL: '',
       postLoginRedirectURL: '',
+    })
+
+    addTemplate({
+      filename: 'kinde-version.mjs',
+      getContents: () => `export const version = '${version}'`,
     })
 
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
