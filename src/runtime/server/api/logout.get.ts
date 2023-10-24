@@ -1,8 +1,8 @@
 import { defineEventHandler, sendRedirect } from 'h3'
-import { kindeClient } from '../utils/client'
+import { getKindeClient } from '../utils/client'
 
 export default defineEventHandler(async event => {
-  const logoutURL = await kindeClient.logout(
+  const logoutURL = await getKindeClient().logout(
     event.context.kinde!.sessionManager
   )
   await sendRedirect(event, logoutURL.href)

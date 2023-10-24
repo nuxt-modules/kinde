@@ -1,8 +1,8 @@
 import { defineEventHandler, sendRedirect } from 'h3'
-import { kindeClient } from '../utils/client'
+import { getKindeClient } from '../utils/client'
 
 export default defineEventHandler(async event => {
-  const registerURL = await kindeClient.register(
+  const registerURL = await getKindeClient().register(
     event.context.kinde.sessionManager,
     {
       // TODO: support custom org type, etc.

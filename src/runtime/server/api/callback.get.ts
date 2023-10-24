@@ -1,10 +1,10 @@
 import { defineEventHandler, getRequestURL, sendRedirect } from 'h3'
-import { kindeClient } from '../utils/client'
+import { getKindeClient } from '../utils/client'
 
 const config = useRuntimeConfig()
 
 export default defineEventHandler(async event => {
-  await kindeClient.handleRedirectToApp(
+  await getKindeClient().handleRedirectToApp(
     event.context.kinde!.sessionManager,
     getRequestURL(event)
   )

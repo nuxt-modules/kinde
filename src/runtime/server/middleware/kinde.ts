@@ -1,12 +1,13 @@
 import type { H3Event } from 'h3'
 import type { ACClient, SessionManager } from '@kinde-oss/kinde-typescript-sdk'
 import { defineEventHandler } from 'h3'
-import { kindeClient } from '../utils/client'
+import { getKindeClient } from '../utils/client'
 import { getSession, updateSession, clearSession } from '#imports'
 
 export default defineEventHandler(async event => {
   const sessionManager = await createSessionManager(event)
   event.context.kinde = { sessionManager }
+  const kindeClient = getKindeClient()
   for (const key in kindeClient) {
     event.context.kinde[key] = kindeClient[key].bind(
       kindeClient,
