@@ -1,5 +1,6 @@
 import { defineEventHandler, getRequestURL, sendRedirect } from 'h3'
 import { getKindeClient } from '../utils/client'
+import { useRuntimeConfig } from '#imports'
 
 const config = useRuntimeConfig()
 
