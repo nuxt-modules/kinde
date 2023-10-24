@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v0.1.2
+
+[compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.1...v0.1.2)
+
+### 🩹 Fixes
+
+- Missing import for runtime config ([#12](https://github.com/nuxt-modules/kinde/pull/12))
+
+### 🏡 Chore
+
+- Update release command ([a51bf49](https://github.com/nuxt-modules/kinde/commit/a51bf49))
+- **release:** V0.1.1 ([1bfcfce](https://github.com/nuxt-modules/kinde/commit/1bfcfce))
+
+### ❤️ Contributors
+
+- Dave <dave@kinde.com>
+- Daniel Roe <daniel@roe.dev>
+
 ## v0.1.1
 
 
