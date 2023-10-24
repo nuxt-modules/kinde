@@ -74,5 +74,5 @@
 </template>
 
 <script>
-import "~/assets/css/globals.css";
+import '~/assets/css/globals.css'
 </script>
