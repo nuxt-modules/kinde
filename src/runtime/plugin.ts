@@ -7,14 +7,15 @@ import {
 import type { UserType } from '@kinde-oss/kinde-typescript-sdk'
 
 export default defineNuxtPlugin(async () => {
-  const state = useState<{ loggedIn: true, user: UserType } | { loggedIn: false, user: null }>(shallowRef)
+  const state = useState<{ loggedIn: true, user: UserType } | { loggedIn: false, user: null }>('auth', shallowRef)
   if (import.meta.server) {
-    const isLoggedIn = await useRequestEvent().context.kinde.isAuthenticated()
+    const event = useRequestEvent()
+    const isLoggedIn = await event.context.kinde.isAuthenticated()
 
     state.value = {
       loggedIn: isLoggedIn,
       user: isLoggedIn
-        ? await useRequestEvent().context.kinde.getUserProfile()
+        ? await event.context.kinde.getUserProfile()
         : null,
     } as { loggedIn: true, user: UserType } | { loggedIn: false, user: null }
   }
