@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v0.1.3
+
+[compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.2...v0.1.3)
+
+### 🚀 Enhancements
+
+- Support setting client secret and document middleware option ([e0499f8](https://github.com/nuxt-modules/kinde/commit/e0499f8))
+
+### 🩹 Fixes
+
+- Use keyed auth state ([a42f735](https://github.com/nuxt-modules/kinde/commit/a42f735))
+
+### 🏡 Chore
+
+- **release:** V0.1.2 ([6733546](https://github.com/nuxt-modules/kinde/commit/6733546))
+- Make a monorepo for playground cloneability ([51ece88](https://github.com/nuxt-modules/kinde/commit/51ece88))
+
+### ❤️ Contributors
+
+- Daniel Roe <daniel@roe.dev>
+- Dave Berner <davidajberner@gmail.com>
+
 ## v0.1.2
 
 [compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.1...v0.1.2)
