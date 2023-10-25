@@ -10,7 +10,7 @@
       </p>
 
       <NuxtLink
-        to="https://kinde.com/docs/sdks/nuxt-sdk"
+        to="https://kinde.com/docs/developer-tools/nuxt-module/"
         class="btn btn-light btn-big"
         external
       >
