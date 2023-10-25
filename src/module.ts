@@ -19,6 +19,7 @@ export interface ModuleOptions {
   }
   authDomain?: string
   clientId?: string
+  clientSecret?: string
   redirectURL?: string
   logoutRedirectURL?: string
   postLoginRedirectURL?: string
@@ -36,6 +37,7 @@ export default defineNuxtModule<ModuleOptions>({
     middleware: true,
     authDomain: '',
     clientId: '',
+    clientSecret: '',
     redirectURL: '',
     logoutRedirectURL: '',
     postLoginRedirectURL: '',
@@ -47,7 +49,7 @@ export default defineNuxtModule<ModuleOptions>({
       redirectURL: options.redirectURL,
       logoutRedirectURL: options.logoutRedirectURL,
       postLoginRedirectURL: options.postLoginRedirectURL,
-      clientSecret: '',
+      clientSecret: options.clientSecret,
     })
 
     nuxt.options.nitro.virtual ||= {}

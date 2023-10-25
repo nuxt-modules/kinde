@@ -33,6 +33,13 @@ npm install --save-dev @nuxtjs/kinde
 ```js
 export default defineNuxtConfig({
   modules: ['@nuxtjs/kinde'],
+  kinde: {
+    // This is true by default and adds 'auth-logged-in' and 'auth-logged-out'
+    // middleware to your Nuxt application.
+    // 
+    // middleware: false,
+    // 
+  }
 })
 ```
 
@@ -47,16 +54,21 @@ NUXT_KINDE_LOGOUT_REDIRECT_URL="http://localhost:3000"
 NUXT_KINDE_POST_LOGIN_REDIRECT_URL="http://localhost:3000/dashboard"
 ```
 
-You can alternatively set any of these values except the client secret in your `nuxt.config` file:
+You can alternatively set any of these values in your `nuxt.config` file:
 
 ```ts
 export default defineNuxtConfig({
   kinde: {
     authDomain: 'https://<your_kinde_subdomain>.kinde.com',
     clientId: '<your_kinde_client_id>',
-    redirectURL: 'http://localhost:3000/api/callback',
-    logoutRedirectURL: 'http://localhost:3000',
-    postLoginRedirectURL: 'http://localhost:3000/dashboard',
+    // You probably don't want to set any of the following directly in your config
+    // as they either shouldn't be committed to version control, or are dependent
+    // on your environment.
+    // 
+    // clientSecret: '<your_kinde_client_secret>',
+    // redirectURL: 'http://localhost:3000/api/callback',
+    // logoutRedirectURL: 'http://localhost:3000',
+    // postLoginRedirectURL: 'http://localhost:3000/dashboard',
   }
 })
 ```
