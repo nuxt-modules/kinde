@@ -21,8 +21,8 @@ async function createSessionManager(event: H3Event): Promise<SessionManager> {
   const keysInCookie = ['refresh_token', 'access_token', 'ac-state-key']
   const memorySession: Record<(typeof keysInCookie)[number], string> = {}
   const config = {
-    name: 'kinde',
-    password: 'slkdaslkdjfskldafjaslkdjfasldkfjsdf',
+    name: 'kinde', // Example name for config session
+    password: 'slkdaslkdjfskldafjaslkdjfasldkfjsdf', // Example password for the config session
   }
   return {
     async getSessionItem(itemKey) {
