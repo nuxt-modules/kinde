@@ -25,7 +25,7 @@ importers:
         specifier: latest
         version: 1.0.0(nuxt@3.8.0)(rollup@3.29.4)(vite@4.5.0)
       '@nuxt/eslint-config':
-        specifier: ^0.2.0
+        specifier: 0.2.0
         version: 0.2.0(eslint@8.51.0)
       '@nuxt/module-builder':
         specifier: ^0.5.2
@@ -37,10 +37,10 @@ importers:
         specifier: ^3.8.0
         version: 3.8.0(rollup@3.29.4)(vitest@0.34.6)(vue@3.3.7)
       '@types/node':
-        specifier: ^20.8.6
+        specifier: 20.8.6
         version: 20.8.6
       changelogen:
-        specifier: ^0.5.5
+        specifier: 0.5.5
         version: 0.5.5
       eslint:
         specifier: ^8.51.0
@@ -1459,6 +1459,7 @@ packages:
     dependencies:
       is-glob: 4.0.3
       micromatch: 4.0.5
+      napi-wasm: 1.1.0
     dev: true
     bundledDependencies:
       - napi-wasm
@@ -4651,6 +4652,10 @@ packages:
     resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
     engines: {node: ^14 || ^16 || >=18}
     hasBin: true
+    dev: true
+
+  /napi-wasm@1.1.0:
+    resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}
     dev: true
 
   /natural-compare@1.4.0:
