@@ -45,6 +45,8 @@ export default defineNuxtConfig({
 
 Add the following configuration to your `.env` file replacing the values in `< >` with your Kinde credentials.
 
+> **NOTE:** The Nuxt Kinde module requires the back-end web API keys
+
 ```bash
 NUXT_KINDE_AUTH_DOMAIN="https://<your_kinde_subdomain>.kinde.com"
 NUXT_KINDE_CLIENT_ID="<your_kinde_client_id>"
