@@ -38,7 +38,7 @@
     "@nuxt/module-builder": "0.5.2",
     "@nuxt/schema": "3.8.0",
     "@nuxt/test-utils": "3.8.0",
-    "@types/node": "20.8.6",
+    "@types/node": "20.9.2",
     "changelogen": "0.5.5",
     "eslint": "8.51.0",
     "nuxt": "3.8.0",
