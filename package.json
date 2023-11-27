@@ -1,6 +1,6 @@
 {
   "name": "@nuxtjs/kinde",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Nuxt integration for Kinde authentication",
   "repository": "nuxt-modules/kinde",
   "license": "MIT",
@@ -28,7 +28,7 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
-    "@kinde-oss/kinde-typescript-sdk": "^2.2.1",
+    "@kinde-oss/kinde-typescript-sdk": "^2.3.1",
     "@nuxt/kit": "^3.8.0",
     "defu": "^6.1.2"
   },

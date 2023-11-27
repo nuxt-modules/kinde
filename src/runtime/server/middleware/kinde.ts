@@ -29,7 +29,7 @@ async function createSessionManager(event: H3Event): Promise<SessionManager> {
       const session = await getSession(event, config)
       return session.data[itemKey] || memorySession[itemKey]
     },
-    async setSessionItem(itemKey, itemValue) {
+    async setSessionItem(itemKey, itemValue:  string | any) {
       if (keysInCookie.includes(itemKey)) {
         await updateSession(event, config, {
           [itemKey]: itemValue,

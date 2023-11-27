@@ -9,7 +9,11 @@
         <br>
         Build the important stuff.
       </p>
+      <p>
+        Logged in user permissions: {{ permissions }}
+      </p>
     </div>
+
     <section class="next-steps-section">
       <h2 class="text-heading-1">
         Next steps for you
@@ -22,4 +26,11 @@
 definePageMeta({
   middleware: ['auth-logged-in'],
 })
+
+const kinde = useKindeClient();
+
+const { data: permissions } = await useAsyncData(async () => {
+  return (await kinde.getPermissions())?.permissions;
+});
+
 </script>
