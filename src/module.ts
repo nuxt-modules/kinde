@@ -4,6 +4,7 @@ import {
   addPlugin,
   createResolver,
   addRouteMiddleware,
+  addImports,
 } from '@nuxt/kit'
 import { defu } from 'defu'
 import { version } from '../package.json'
@@ -87,7 +88,7 @@ export default defineNuxtModule<ModuleOptions>({
         options.handlers?.logout ||
         resolver.resolve('./runtime/server/api/logout.get'),
     })
-
+    addImports({ name: 'useAuth', as: 'useAuth', from: resolver.resolve('./runtime/composables') });
     if (options.middleware) {
       addRouteMiddleware({
         name: 'auth-logged-in',
