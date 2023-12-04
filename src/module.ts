@@ -88,7 +88,7 @@ export default defineNuxtModule<ModuleOptions>({
         options.handlers?.logout ||
         resolver.resolve('./runtime/server/api/logout.get'),
     })
-    addImports({ name: 'useAuth', as: 'useAuth', from: resolver.resolve('./runtime/composables') });
+    addImports({ name: 'useAuth', as: 'useAuth', from: resolver.resolve('./runtime/composables') })
     if (options.middleware) {
       addRouteMiddleware({
         name: 'auth-logged-in',
