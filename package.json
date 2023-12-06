@@ -45,6 +45,7 @@
     "vitest": "1.0.1"
   },
   "resolutions": {
-    "@nuxtjs/kinde": "link:."
+    "@nuxtjs/kinde": "link:.",
+    "@nuxt/schema": "3.8.0"
   }
 }

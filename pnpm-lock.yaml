@@ -6,6 +6,7 @@ settings:
 
 overrides:
   '@nuxtjs/kinde': link:.
+  '@nuxt/schema': 3.8.0
 
 importers:
 
