@@ -1,6 +1,36 @@
 # Changelog
 
 
+## v0.1.4
+
+[compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.3...v0.1.4)
+
+### 🚀 Enhancements
+
+- Add `useAuth` composable and discriminated union for `$auth` ([#28](https://github.com/nuxt-modules/kinde/pull/28))
+
+### 🩹 Fixes
+
+- Assert `$auth` type ([b570be7](https://github.com/nuxt-modules/kinde/commit/b570be7))
+
+### 📖 Documentation
+
+- Update README.md ([#20](https://github.com/nuxt-modules/kinde/pull/20))
+
+### 🏡 Chore
+
+- **release:** V0.1.3 ([26baf12](https://github.com/nuxt-modules/kinde/commit/26baf12))
+- Update link to Nuxt SDK ([#13](https://github.com/nuxt-modules/kinde/pull/13))
+- **deps-dev:** Bump vite from 4.5.0 to 4.5.1 ([#31](https://github.com/nuxt-modules/kinde/pull/31))
+- Add `@nuxt/schema` resolution ([d554047](https://github.com/nuxt-modules/kinde/commit/d554047))
+
+### ❤️ Contributors
+
+- Daniel Roe <daniel@roe.dev>
+- Giovanni Patruno ([@GioPat](http://github.com/GioPat))
+- Daniel Rivers ([@DanielRivers](http://github.com/DanielRivers))
+- Sébastien Chopin ([@Atinux](http://github.com/Atinux))
+
 ## v0.1.3
 
 [compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.2...v0.1.3)
