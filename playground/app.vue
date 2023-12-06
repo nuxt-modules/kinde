@@ -4,12 +4,12 @@
       <h1 class="text-display-3">
         Kinde x Nuxt
       </h1>
-      <div v-if="$auth.loggedIn">
+      <div v-if="auth.loggedIn">
         <div class="profile-blob">
           <img
-            v-if="$auth.user.picture"
+            v-if="auth.user.picture"
             class="avatar"
-            :src="$auth.user.picture"
+            :src="auth.user.picture"
             alt="user profile avatar"
             referrerPolicy="no-referrer"
           >
@@ -17,12 +17,12 @@
             v-else
             class="avatar"
           >
-            {{ $auth.user?.given_name?.[0] }} {{ $auth.user?.family_name?.[0] }}
+            {{ auth.user?.given_name?.[0] }} {{ auth.user?.family_name?.[0] }}
           </div>
 
           <div>
             <p class="text-heading-2">
-              {{ $auth.user?.given_name }} {{ $auth.user?.family_name }}
+              {{ auth.user?.given_name }} {{ auth.user?.family_name }}
             </p>
 
             <NuxtLink
@@ -73,6 +73,8 @@
   </footer>
 </template>
 
-<script>
+<script setup lang="ts">
 import '~/assets/css/globals.css'
+
+const auth = useAuth()
 </script>
