@@ -11,13 +11,9 @@ export default defineNuxtPlugin(async () => {
   if (import.meta.server) {
     const event = useRequestEvent()
     const isLoggedIn = await event.context.kinde.isAuthenticated()
-    state.value = isLoggedIn ? {
-      loggedIn: true,
-      user: await event.context.kinde.getUserProfile(),
-    } : {
-      loggedIn: false,
-      user: null
-    };
+    state.value = isLoggedIn
+      ? { loggedIn: true, user: await event.context.kinde.getUserProfile() }
+      : { loggedIn: false, user: null }
   }
 
   return {
