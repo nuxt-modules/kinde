@@ -4,6 +4,7 @@ import {
   addPlugin,
   createResolver,
   addRouteMiddleware,
+  addImports,
 } from '@nuxt/kit'
 import { defu } from 'defu'
 import { version } from '../package.json'
@@ -58,6 +59,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
     addPlugin(resolver.resolve('./runtime/plugin'))
 
+    // Server endpoints
     addServerHandler({
       middleware: true,
       handler: resolver.resolve('./runtime/server/middleware/kinde'),
@@ -88,6 +90,10 @@ export default defineNuxtModule<ModuleOptions>({
         resolver.resolve('./runtime/server/api/logout.get'),
     })
 
+    // Composables
+    addImports({ name: 'useAuth', as: 'useAuth', from: resolver.resolve('./runtime/composables') })
+
+    // Middleware
     if (options.middleware) {
       addRouteMiddleware({
         name: 'auth-logged-in',
@@ -100,3 +106,4 @@ export default defineNuxtModule<ModuleOptions>({
     }
   },
 })
+
