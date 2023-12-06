@@ -1,9 +1,6 @@
-import {
-  defineNuxtPlugin,
-  shallowRef,
-  useState,
-  useRequestEvent,
-} from '#imports'
+import { defineNuxtPlugin, shallowRef, useState, useRequestEvent } from '#imports'
+// TODO: fix issue in `mkdist`
+import type { Plugin } from 'nuxt/app'
 import type { AuthState } from './types'
 
 export default defineNuxtPlugin(async () => {
@@ -21,4 +18,4 @@ export default defineNuxtPlugin(async () => {
       auth: state.value,
     },
   }
-})
+}) as Plugin<{ auth: AuthState }>
