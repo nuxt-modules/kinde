@@ -27,10 +27,11 @@ definePageMeta({
   middleware: ['auth-logged-in'],
 })
 
-const kinde = useKindeClient();
+const client = useKindeClient()
 
 const { data: permissions } = await useAsyncData(async () => {
-  return (await kinde.getPermissions())?.permissions;
+  const { permissions } = await client?.getPermissions() ?? {}
+  return permissions
 });
 
 </script>
