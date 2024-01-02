@@ -77,6 +77,24 @@ export default defineNuxtConfig({
 
 That's it! You can now use Nuxt Kinde in your Nuxt app ✨
 
+## Composables
+
+### useAuth
+
+This returns the current auth state, with the following properties.
+
+#### loggedIn
+
+A boolean that indicates if the user is logged in or not.
+
+#### user
+
+The current logged in user state, or null if the user is not logged in.
+
+### useKindeClient
+
+**Server only**. This returns a Kinde client; see [Kinde SDK Documentation](https://kinde.com/docs/developer-tools/typescript-sdk/) for more details.
+
 ## Development
 
 ```bash

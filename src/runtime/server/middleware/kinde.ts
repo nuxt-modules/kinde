@@ -35,6 +35,9 @@ async function createSessionManager(event: H3Event): Promise<SessionManager> {
           [itemKey]: itemValue,
         })
       } else {
+        if (typeof itemValue !== 'string') {
+          throw new TypeError(`${itemKey} must be a string.`)
+        }
         memorySession[itemKey] = itemValue
       }
     },
