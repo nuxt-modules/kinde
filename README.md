@@ -81,20 +81,19 @@ That's it! You can now use Nuxt Kinde in your Nuxt app ✨
 
 ### useAuth
 
-This returns the current auth state
+This returns the current auth state, with the following properties.
 
 #### loggedIn
 
-Returns a boolean depending if the user is logged in or not.
+A boolean that indicates if the user is logged in or not.
 
 #### user
 
-Returns the current logged in user state, returns null if the user is not logged in.
+The current logged in user state, or null if the user is not logged in.
 
+### useKindeClient
 
-### useKindeClient -
-
- **Server Only** returns the kinde client, see [Kinde SDK Documentation](https://kinde.com/docs/developer-tools/typescript-sdk/) for more details.
+**Server only**. This returns a Kinde client; see [Kinde SDK Documentation](https://kinde.com/docs/developer-tools/typescript-sdk/) for more details.
 
 ## Development
 
