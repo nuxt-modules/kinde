@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v0.1.5
+
+[compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.4...v0.1.5)
+
+### 🚀 Enhancements
+
+- Add `useKindeClient` composable for server-side access ([#32](https://github.com/nuxt-modules/kinde/pull/32))
+
+### 🏡 Chore
+
+- **release:** V0.1.4 ([da0bdcc](https://github.com/nuxt-modules/kinde/commit/da0bdcc))
+- Test bundler module resolution ([#35](https://github.com/nuxt-modules/kinde/pull/35))
+- Fix type extension ([91d80cb](https://github.com/nuxt-modules/kinde/commit/91d80cb))
+- Update dependencies ([71cb20f](https://github.com/nuxt-modules/kinde/commit/71cb20f))
+
+### ❤️ Contributors
+
+- Daniel Roe <daniel@roe.dev>
+- Daniel Rivers ([@DanielRivers](http://github.com/DanielRivers))
+
 ## v0.1.4
 
 [compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.3...v0.1.4)
