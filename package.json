@@ -1,6 +1,6 @@
 {
   "name": "@nuxtjs/kinde",
-  "version": "0.2.0",
+  "version": "0.1.4",
   "description": "Nuxt integration for Kinde authentication",
   "repository": "nuxt-modules/kinde",
   "license": "MIT",
