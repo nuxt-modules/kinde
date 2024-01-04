@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.1.6
+
+[compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.5...v0.1.6)
+
+### 🩹 Fixes
+
+- Allow non-strings in session store ([#40](https://github.com/nuxt-modules/kinde/pull/40))
+
+### ❤️ Contributors
+
+- Daniel Rivers ([@DanielRivers](http://github.com/DanielRivers))
+
 ## v0.1.5
 
 [compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.4...v0.1.5)
