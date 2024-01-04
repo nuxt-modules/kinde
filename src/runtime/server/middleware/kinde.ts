@@ -19,7 +19,7 @@ export default defineEventHandler(async event => {
 async function createSessionManager(event: H3Event): Promise<SessionManager> {
   // TODO: improve memory session in future
   const keysInCookie = ['refresh_token', 'access_token', 'ac-state-key']
-  const memorySession: Record<(typeof keysInCookie)[number], string> = {}
+  const memorySession: Record<(typeof keysInCookie)[number], unknown> = {}
   const config = {
     name: 'kinde',
     password: 'slkdaslkdjfskldafjaslkdjfasldkfjsdf',
@@ -35,9 +35,6 @@ async function createSessionManager(event: H3Event): Promise<SessionManager> {
           [itemKey]: itemValue,
         })
       } else {
-        if (typeof itemValue !== 'string') {
-          throw new TypeError(`${itemKey} must be a string.`)
-        }
         memorySession[itemKey] = itemValue
       }
     },
