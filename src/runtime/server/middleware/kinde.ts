@@ -2,8 +2,8 @@ import type { H3Event } from 'h3'
 import type { ACClient, SessionManager } from '@kinde-oss/kinde-typescript-sdk'
 import { defineEventHandler } from 'h3'
 import { getKindeClient } from '../utils/client'
-import { getSession, updateSession, clearSession } from '#imports'
 
+const SESSIONCOOKIE = 'sessionManager'
 export default defineEventHandler(async event => {
   const sessionManager = await createSessionManager(event)
   event.context.kinde = { sessionManager }
@@ -20,38 +20,35 @@ async function createSessionManager(event: H3Event): Promise<SessionManager> {
   // TODO: improve memory session in future
   const keysInCookie = ['refresh_token', 'access_token', 'ac-state-key']
   const memorySession: Record<(typeof keysInCookie)[number], unknown> = {}
-  const config = {
-    name: 'kinde',
-    password: 'slkdaslkdjfskldafjaslkdjfasldkfjsdf',
-  }
+
+  const cookiePayload = getCookie(event, SESSIONCOOKIE)
+  const session: any = cookiePayload ? JSON.parse(cookiePayload) : {}
+
   return {
     async getSessionItem(itemKey) {
-      const session = await getSession(event, config)
-      return session.data[itemKey] || memorySession[itemKey]
+      return session[itemKey] || memorySession[itemKey]
     },
     async setSessionItem(itemKey, itemValue) {
       if (keysInCookie.includes(itemKey)) {
-        await updateSession(event, config, {
-          [itemKey]: itemValue,
-        })
+        session[itemKey] = itemValue
+        setCookie(event, SESSIONCOOKIE, JSON.stringify(session))
       } else {
         memorySession[itemKey] = itemValue
       }
     },
     async removeSessionItem(itemKey) {
       if (keysInCookie.includes(itemKey)) {
-        await updateSession(event, config, {
-          [itemKey]: undefined,
-        })
+        delete session[itemKey]
+        setCookie(event, SESSIONCOOKIE, JSON.stringify(session))
       } else {
         delete memorySession[itemKey]
       }
     },
     async destroySession() {
+      deleteCookie(event, SESSIONCOOKIE)
       for (const key in memorySession) {
         delete memorySession[key]
       }
-      await clearSession(event, config)
     },
   }
 }
