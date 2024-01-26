@@ -63,6 +63,7 @@ export default defineNuxtModule<ModuleOptions>({
       logoutRedirectURL: options.logoutRedirectURL,
       postLoginRedirectURL: options.postLoginRedirectURL,
       clientSecret: options.clientSecret,
+      protectedServerRoutes: options.protectedServerRoutes
     })
 
     // https://github.com/Atinux/nuxt-auth-utils/blob/main/src/module.ts#L71-L80
