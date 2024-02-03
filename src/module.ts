@@ -7,6 +7,7 @@ import type { CookieSerializeOptions } from 'cookie-es'
 import { join } from 'pathe'
 
 import { version } from '../package.json'
+import { extendTypes } from './kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -149,6 +150,20 @@ export default defineNuxtModule<ModuleOptions>({
       name: 'RegisterLink',
       filePath: resolver.resolve('./runtime/components/RegisterLink'),
     })
+    extendTypes('nuxt-og-image', ({ typesPath }) => {
+      // need to map our components to types so we can import them
+      return `
+declare module 'nitropack' {
+  interface NitroRouteRules {
+    kinde?: import('${typesPath}').KindeRouteRules
+  }
+  interface NitroRouteConfig {
+    kinde?: import('${typesPath}').KindeRouteRules
+  }
+`
+    })
+
+
   },
 })
 

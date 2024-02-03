@@ -5,9 +5,8 @@ import {
   navigateTo,
   useNuxtApp,
 } from '#imports'
-import { minimatch } from 'minimatch'
 import { getKindeClient } from '../server/utils/client';
-import type { RouteAccessPermissions } from '~/src/module';
+import type { KindeRouteRules } from '../types';
 
 function rejectNavigation(status: number, message: string) {
   if (import.meta.server) {
@@ -19,33 +18,30 @@ function rejectNavigation(status: number, message: string) {
   return abortNavigation()
 }
 
-export default defineNuxtRouteMiddleware(async(to) => {
+export default defineNuxtRouteMiddleware(async() => {
   const nuxt = useNuxtApp();
-  const kindeConfig = nuxt.$config.kinde;
+  const kindeConfig: KindeRouteRules = nuxt.ssrContext?.event.context._nitro.routeRules.kinde;
 
   if (!nuxt.$auth.loggedIn) {
+    if (kindeConfig.redirectUrl) {
+      return navigateTo(kindeConfig.redirectUrl)
+    }
     return rejectNavigation(401, 'You must be logged in to access this page')
   }
 
-  if (kindeConfig && kindeConfig.protectedServerRoutes) {
+  if (kindeConfig && kindeConfig) {
     const kinde = getKindeClient()
 
-    for (const routePattern of kindeConfig.protectedServerRoutes as RouteAccessPermissions[]) {
-      const pattern = Object.keys(routePattern)[0];
-      if (!minimatch(to.fullPath, pattern)) {
-        return
-      }
-
-      const accessPermissions = routePattern[pattern].permissions
+      const accessPermissions = kindeConfig.permissions
       const usersPermissions = await kinde.getPermissions(nuxt.ssrContext?.event.context.kinde.sessionManager!);
-      const hasCommonValue = accessPermissions.some(item => usersPermissions.permissions.includes(item));
+      const hasCommonValue = accessPermissions?.some(item => usersPermissions.permissions.includes(item)) || [];
 
       if (!hasCommonValue) {
-        if (routePattern[pattern].redirectUrl) {
-          return navigateTo(routePattern[pattern].redirectUrl)
+        if (kindeConfig.redirectUrl) {
+          return navigateTo(kindeConfig.redirectUrl)
         }
         return rejectNavigation(401, 'You must be logged in to access this page')
       }
     }
-  }
+
 })

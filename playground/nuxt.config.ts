@@ -1,14 +1,20 @@
 export default defineNuxtConfig({
   modules: ['@nuxtjs/kinde'],
   devtools: { enabled: true },
-  kinde: {
-    protectedServerRoutes: [
-      {
-        "/protected": {
-          permissions: ['example_permission'],
-          redirectUrl: "/"
-        }
+  routeRules: {
+    "/protected": {
+      kinde: {
+        permissions: ['example_permission'],
+        redirectUrl: '/',
       }
-    ]
+    },
+    "/dashboard": {
+      kinde: {
+        redirectUrl: '/',
+      }
+    }
+  },
+  experimental: {
+    inlineRouteRules: true
   }
 })
