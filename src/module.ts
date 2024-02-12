@@ -5,6 +5,7 @@ import {
   createResolver,
   addRouteMiddleware,
   addImports,
+  addComponent,
 } from '@nuxt/kit'
 import { defu } from 'defu'
 import { version } from '../package.json'
@@ -105,6 +106,18 @@ export default defineNuxtModule<ModuleOptions>({
         path: resolver.resolve('./runtime/middleware/auth-logged-out'),
       })
     }
+
+    addComponent({
+      name: 'LoginLink',
+      filePath: resolver.resolve('./runtime/components/loginLink'),
+      mode: 'client'
+    })
+
+    addComponent({
+      name: 'RegisterLink',
+      filePath: resolver.resolve('./runtime/components/registerLink'),
+      mode: 'client'
+    })
   },
 })
 

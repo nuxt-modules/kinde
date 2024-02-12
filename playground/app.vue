@@ -36,20 +36,18 @@
         </div>
       </div>
       <div v-else>
-        <NuxtLink
+        <LoginLink
+          org-code="org_59a2791ae75"
           class="btn btn-ghost sign-in-btn"
-          to="/api/login"
-          external
         >
           Sign in
-        </NuxtLink>
-        <NuxtLink
+        </LoginLink>
+        <RegisterLink
+          :org-code="'org_59a2791ae75'"
           class="btn btn-dark"
-          to="/api/register"
-          external
         >
           Sign up
-        </NuxtLink>
+        </RegisterLink>
       </div>
     </nav>
   </header>
@@ -77,4 +75,5 @@
 import '~/assets/css/globals.css'
 
 const auth = useAuth()
+
 </script>
