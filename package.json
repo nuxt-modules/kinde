@@ -28,7 +28,7 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
-    "@kinde-oss/kinde-typescript-sdk": "^2.5.0",
+    "@kinde-oss/kinde-typescript-sdk": "^2.6.2",
     "@nuxt/kit": "^3.9.0",
     "defu": "^6.1.3"
   },
