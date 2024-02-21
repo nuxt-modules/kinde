@@ -2,7 +2,7 @@ import { defineEventHandler, sendRedirect } from 'h3'
 import { getKindeClient } from '../utils/client'
 
 export default defineEventHandler(async event => {
-  const {org_code, authUrlParams, postLoginRedirectURL} = getQuery(event)
+  const { org_code, authUrlParams, postLoginRedirectURL } = getQuery(event)
 
   const registerURL = await getKindeClient().register(
     event.context.kinde.sessionManager,
