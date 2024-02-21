@@ -16,7 +16,7 @@ export interface ModuleOptions {
     callback?: string
     login?: string
     logout?: string
-    register?: string,
+    register?: string
     health?: string
   }
   authDomain?: string
