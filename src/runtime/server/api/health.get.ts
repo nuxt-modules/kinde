@@ -6,8 +6,8 @@ export default defineEventHandler(() => {
     apiPath: kinde.authDomain,
     redirectURL: kinde.redirectURL,
     postLoginRedirectURL: kinde.postLoginRedirectURL,
-    logoutRedirectURL:  kinde.logoutRedirectURL,
-    clientID:  kinde.clientId,
-    clientSecret:  kinde.clientSecret.match('[a-z0-9]{32}') ? 'Set correctly' : 'Not set correctly',
+    logoutRedirectURL: kinde.logoutRedirectURL,
+    clientID: kinde.clientId,
+    clientSecret: kinde.clientSecret.match('[a-z0-9]{32}') ? 'Set correctly' : 'Not set correctly',
   };
 })
