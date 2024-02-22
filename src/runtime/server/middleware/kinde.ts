@@ -1,4 +1,4 @@
-import type { H3Event } from 'h3'
+import type { H3Event, SessionConfig } from 'h3'
 import type { ACClient, SessionManager } from '@kinde-oss/kinde-typescript-sdk'
 import { defineEventHandler } from 'h3'
 import { getKindeClient } from '../utils/client'
@@ -23,7 +23,7 @@ async function createSessionManager(event: H3Event): Promise<SessionManager> {
   const config = {
     name: 'kinde',
     password: 'slkdaslkdjfskldafjaslkdjfasldkfjsdf',
-  }
+  } satisfies SessionConfig
   return {
     async getSessionItem(itemKey) {
       const session = await getSession(event, config)
