@@ -48,7 +48,7 @@
     "vitest": "1.3.1"
   },
   "resolutions": {
-    "@nuxt/schema": "3.9.3",
+    "@nuxt/schema": "3.10.3",
     "@nuxtjs/kinde": "link:."
   }
 }
