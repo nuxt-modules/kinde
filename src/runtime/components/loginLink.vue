@@ -12,7 +12,6 @@ import { generateAuthUrlParams } from '../server/utils/generateAuthUrlParams'
 import type { LoginURLOptions } from '@kinde-oss/kinde-typescript-sdk'
 
 const props = defineProps<LoginURLOptions>()
-
 const href = computed(() => {
   return `/api/login?${generateAuthUrlParams(props)}`
 })

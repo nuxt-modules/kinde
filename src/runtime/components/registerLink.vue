@@ -12,7 +12,7 @@ import { generateAuthUrlParams } from '../server/utils/generateAuthUrlParams'
 import type { AuthURLOptions } from '@kinde-oss/kinde-typescript-sdk'
 
 const props = defineProps<AuthURLOptions>()
-  const href = computed(() => {
-    return  `/api/register?${generateAuthUrlParams(props)}`
-  })
+const href = computed(() => {
+  return  `/api/register?${generateAuthUrlParams(props)}`
+})
 </script>
