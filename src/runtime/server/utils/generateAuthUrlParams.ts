@@ -4,7 +4,9 @@ export const generateAuthUrlParams = (
   props: AuthURLOptions | LoginURLOptions
 ) => {
   const params = new URLSearchParams();
-  const paramsObj: { [key: string]: any } = {...props.authUrlParams, ...props};
+  const propsClone = { ...props };
+  delete propsClone.authUrlParams;
+  const paramsObj: { [key: string]: any } = {...props.authUrlParams, ...propsClone};
   for (const key in paramsObj) {
     paramsObj[key] && params.append(key, paramsObj[key]);
   }

@@ -8,13 +8,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from '#imports'
 import { generateAuthUrlParams } from '../server/utils/generateAuthUrlParams'
 import type { LoginURLOptions } from '@kinde-oss/kinde-typescript-sdk'
 
 const props = defineProps<LoginURLOptions>()
-  const href = computed(() => {
-    const params = generateAuthUrlParams(props)
-    return  `/api/login?${params.toString()}`
-  })
+
+const href = computed(() => {
+  return `/api/login?${generateAuthUrlParams(props)}`
+})
 </script>
