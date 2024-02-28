@@ -25,6 +25,7 @@ export interface ModuleOptions {
   redirectURL?: string
   logoutRedirectURL?: string
   postLoginRedirectURL?: string
+  debug?: boolean
 }
 
 const resolver = createResolver(import.meta.url)
@@ -43,6 +44,7 @@ export default defineNuxtModule<ModuleOptions>({
     redirectURL: '',
     logoutRedirectURL: '',
     postLoginRedirectURL: '',
+    debug: process.env.NODE_ENV === 'development',
   },
   setup(options, nuxt) {
     nuxt.options.runtimeConfig.kinde = defu(nuxt.options.runtimeConfig.kinde, {
@@ -52,6 +54,7 @@ export default defineNuxtModule<ModuleOptions>({
       logoutRedirectURL: options.logoutRedirectURL,
       postLoginRedirectURL: options.postLoginRedirectURL,
       clientSecret: options.clientSecret,
+      debug: options.debug,
     })
 
     nuxt.options.nitro.virtual ||= {}
@@ -84,12 +87,16 @@ export default defineNuxtModule<ModuleOptions>({
         options.handlers?.register ||
         resolver.resolve('./runtime/server/api/register.get'),
     })
-    addServerHandler({
-      route: '/api/health',
-      handler:
-        options.handlers?.health ||
-        resolver.resolve('./runtime/server/api/health.get'),
-    })
+
+    if (nuxt.options.runtimeConfig.kinde.debug) {
+      addServerHandler({
+        route: '/api/health',
+        handler:
+          options.handlers?.health ||
+          resolver.resolve('./runtime/server/api/health.get'),
+      })
+    }
+
     addServerHandler({
       route: '/api/logout',
       handler:
