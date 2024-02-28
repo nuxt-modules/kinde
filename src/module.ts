@@ -110,13 +110,11 @@ export default defineNuxtModule<ModuleOptions>({
     addComponent({
       name: 'LoginLink',
       filePath: resolver.resolve('./runtime/components/loginLink'),
-      mode: 'client'
     })
 
     addComponent({
       name: 'RegisterLink',
       filePath: resolver.resolve('./runtime/components/registerLink'),
-      mode: 'client'
     })
   },
 })

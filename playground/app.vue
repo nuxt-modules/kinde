@@ -37,14 +37,13 @@
       </div>
       <div v-else>
         <LoginLink
-          org-code="org_59a2791ae75"
           class="btn btn-ghost sign-in-btn"
         >
           Sign in
         </LoginLink>
         <RegisterLink
-          :org-code="'org_59a2791ae75'"
           class="btn btn-dark"
+          :is_create_org="true"
         >
           Sign up
         </RegisterLink>
