@@ -9,12 +9,12 @@
 
 <script setup lang="ts">
 import type { LoginURLOptions } from '@kinde-oss/kinde-typescript-sdk'
-import { computed } from '#imports'
-
-import { generateAuthUrlParams } from '../server/utils/generateAuthUrlParams'
+import { computed } from 'vue'
+import { withQuery } from 'ufo'
 
 const props = defineProps<LoginURLOptions>()
 const href = computed(() => {
-  return `/api/login?${generateAuthUrlParams(props)}`
+  const { authUrlParams, ..._authUrlParams } = props
+  return withQuery('/api/login', { ...authUrlParams, ..._authUrlParams })
 })
 </script>
