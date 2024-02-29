@@ -38,7 +38,9 @@ export default defineNuxtConfig({
     // middleware to your Nuxt application.
     // 
     // middleware: false,
-    // 
+    //
+    // enable the debug `/api/health` endpoint
+    // debug: true,
   }
 })
 ```
@@ -94,18 +96,6 @@ The current logged in user state, or null if the user is not logged in.
 ### useKindeClient
 
 **Server only**. This returns a Kinde client; see [Kinde SDK Documentation](https://kinde.com/docs/developer-tools/typescript-sdk/) for more details.
-
-## Debug
-
-To enable the debug `/api/health` endpoint set the `debug` property within the `nuxt.config.ts` 
-
-```ts
-export default defineNuxtConfig({
-  kinde: {
-    debug: true
-  }
-})
-```
 
 ## Development
 
