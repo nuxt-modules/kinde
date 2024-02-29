@@ -8,8 +8,10 @@
 </template>
 
 <script setup lang="ts">
-import { generateAuthUrlParams } from '../server/utils/generateAuthUrlParams'
 import type { AuthURLOptions } from '@kinde-oss/kinde-typescript-sdk'
+import { computed } from '#imports'
+
+import { generateAuthUrlParams } from '../server/utils/generateAuthUrlParams'
 
 const props = defineProps<AuthURLOptions>()
 const href = computed(() => {
