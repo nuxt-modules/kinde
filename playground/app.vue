@@ -43,7 +43,7 @@
         </LoginLink>
         <RegisterLink
           class="btn btn-dark"
-          :is_create_org="true"
+          is_create_org
         >
           Sign up
         </RegisterLink>
