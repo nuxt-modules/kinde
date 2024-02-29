@@ -38,7 +38,9 @@ export default defineNuxtConfig({
     // middleware to your Nuxt application.
     // 
     // middleware: false,
-    // 
+    //
+    // enable the debug `/api/health` endpoint
+    // debug: true,
   }
 })
 ```

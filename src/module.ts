@@ -18,6 +18,7 @@ export interface ModuleOptions {
     login?: string
     logout?: string
     register?: string
+    health?: string
   }
   authDomain?: string
   clientId?: string
@@ -25,6 +26,7 @@ export interface ModuleOptions {
   redirectURL?: string
   logoutRedirectURL?: string
   postLoginRedirectURL?: string
+  debug?: boolean
 }
 
 const resolver = createResolver(import.meta.url)
@@ -35,7 +37,7 @@ export default defineNuxtModule<ModuleOptions>({
     version
   },
   // Default configuration options of the Nuxt module
-  defaults: {
+  defaults: nuxt => ({
     middleware: true,
     authDomain: '',
     clientId: '',
@@ -43,7 +45,8 @@ export default defineNuxtModule<ModuleOptions>({
     redirectURL: '',
     logoutRedirectURL: '',
     postLoginRedirectURL: '',
-  },
+    debug: nuxt.options.dev || nuxt.options.debug,
+  }),
   setup(options, nuxt) {
     nuxt.options.runtimeConfig.kinde = defu(nuxt.options.runtimeConfig.kinde, {
       authDomain: options.authDomain,
@@ -84,6 +87,16 @@ export default defineNuxtModule<ModuleOptions>({
         options.handlers?.register ||
         resolver.resolve('./runtime/server/api/register.get'),
     })
+
+    if (options.debug) {
+      addServerHandler({
+        route: '/api/health',
+        handler:
+          options.handlers?.health ||
+          resolver.resolve('./runtime/server/api/health.get'),
+      })
+    }
+
     addServerHandler({
       route: '/api/logout',
       handler:
