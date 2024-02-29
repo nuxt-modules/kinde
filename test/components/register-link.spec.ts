@@ -1,10 +1,10 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { describe, test, expect } from 'vitest'
-import registerLink from '../../src/runtime/components/registerLink.vue'
+import { RegisterLink } from '#components'
 
-describe('loginLink', () => {
+describe('RegisterLink', () => {
   test('is a Vue instance', async () => {
-    const wrapper = await mountSuspended(registerLink, {
+    const wrapper = await mountSuspended(RegisterLink, {
       slots: {
         default: () => 'Hello'
       }
@@ -13,7 +13,7 @@ describe('loginLink', () => {
   })
 
   test('org_code added to URL', async () => {
-    const wrapper = await mountSuspended(registerLink, {
+    const wrapper = await mountSuspended(RegisterLink, {
       slots: {
         default: () => 'Hello'
       },
@@ -21,11 +21,11 @@ describe('loginLink', () => {
         org_code: '123'
       }
     })
-    expect(wrapper.vm.href).toMatch('org_code=123')
+    expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?org_code=123&is_create_org=false"`)
   })
 
   test('org_name added to URL', async () => {
-    const wrapper = await mountSuspended(registerLink, {
+    const wrapper = await mountSuspended(RegisterLink, {
       slots: {
         default: () => 'Hello'
       },
@@ -33,11 +33,11 @@ describe('loginLink', () => {
         org_name: 'NAME123'
       }
     })
-    expect(wrapper.vm.href).toMatch('org_name=NAME123')
+    expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?org_name=NAME123&is_create_org=false"`)
   })
 
   test('state added to URL', async () => {
-    const wrapper = await mountSuspended(registerLink, {
+    const wrapper = await mountSuspended(RegisterLink, {
       slots: {
         default: () => 'Hello'
       },
@@ -45,11 +45,11 @@ describe('loginLink', () => {
         state: 'ASDBED'
       }
     })
-    expect(wrapper.vm.href).toMatch('state=ASDBED')
+    expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?state=ASDBED&is_create_org=false"`)
   })
 
   test('post_login_redirect_url added to URL', async () => {
-    const wrapper = await mountSuspended(registerLink, {
+    const wrapper = await mountSuspended(RegisterLink, {
       slots: {
         default: () => 'Hello'
       },
@@ -57,11 +57,11 @@ describe('loginLink', () => {
         post_login_redirect_url: 'http://example.com/redirect'
       }
     })
-    expect(wrapper.vm.href).toMatch('post_login_redirect_url=http%3A%2F%2Fexample.com%2Fredirect')
+    expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?post_login_redirect_url=http:%2F%2Fexample.com%2Fredirect&is_create_org=false"`)
   })
 
   test('authUrlParams added to URL', async () => {
-    const wrapper = await mountSuspended(registerLink, {
+    const wrapper = await mountSuspended(RegisterLink, {
       slots: {
         default: () => 'Hello'
       },
@@ -71,12 +71,12 @@ describe('loginLink', () => {
         }
       }
     })
-    expect(wrapper.vm.href).toMatch('login_hint=test%40testdomain.com')
+    expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?login_hint=test@testdomain.com&is_create_org=false"`)
   })
 
 
   test('is_create_org added to URL', async () => {
-    const wrapper = await mountSuspended(registerLink, {
+    const wrapper = await mountSuspended(RegisterLink, {
       slots: {
         default: () => 'Hello'
       },
@@ -84,11 +84,11 @@ describe('loginLink', () => {
         is_create_org: true
       }
     })
-    expect(wrapper.vm.href).toMatch('is_create_org=true')
+    expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?is_create_org=true"`)
   })
 
   test('start_page added to URL', async () => {
-    const wrapper = await mountSuspended(registerLink, {
+    const wrapper = await mountSuspended(RegisterLink, {
       slots: {
         default: () => 'Hello'
       },
@@ -96,11 +96,11 @@ describe('loginLink', () => {
         start_page: 'register'
       }
     })
-    expect(wrapper.vm.href).toMatch('start_page=register')
+    expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?start_page=register&is_create_org=false"`)
   })
 
   test('do not authUrlParams added to URL', async () => {
-    const wrapper = await mountSuspended(registerLink, {
+    const wrapper = await mountSuspended(RegisterLink, {
       slots: {
         default: () => 'Hello'
       },
@@ -114,7 +114,7 @@ describe('loginLink', () => {
   })
 
   test('slot content rendered', async () => {
-    const wrapper = await mountSuspended(registerLink, {
+    const wrapper = await mountSuspended(RegisterLink, {
       slots: {
         default: () => 'Hello'
       }
