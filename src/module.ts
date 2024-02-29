@@ -36,7 +36,7 @@ export default defineNuxtModule<ModuleOptions>({
     version
   },
   // Default configuration options of the Nuxt module
-  defaults: {
+  defaults: nuxt => ({
     middleware: true,
     authDomain: '',
     clientId: '',
@@ -44,8 +44,8 @@ export default defineNuxtModule<ModuleOptions>({
     redirectURL: '',
     logoutRedirectURL: '',
     postLoginRedirectURL: '',
-    debug: process.env.NODE_ENV === 'development',
-  },
+    debug: nuxt.options.dev || nuxt.options.debug,
+  }),
   setup(options, nuxt) {
     nuxt.options.runtimeConfig.kinde = defu(nuxt.options.runtimeConfig.kinde, {
       authDomain: options.authDomain,
@@ -54,7 +54,6 @@ export default defineNuxtModule<ModuleOptions>({
       logoutRedirectURL: options.logoutRedirectURL,
       postLoginRedirectURL: options.postLoginRedirectURL,
       clientSecret: options.clientSecret,
-      debug: options.debug,
     })
 
     nuxt.options.nitro.virtual ||= {}
@@ -88,7 +87,7 @@ export default defineNuxtModule<ModuleOptions>({
         resolver.resolve('./runtime/server/api/register.get'),
     })
 
-    if (nuxt.options.runtimeConfig.kinde.debug) {
+    if (options.debug) {
       addServerHandler({
         route: '/api/health',
         handler:
