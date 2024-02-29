@@ -28,24 +28,24 @@
     "test:watch": "vitest watch"
   },
   "dependencies": {
-    "@kinde-oss/kinde-typescript-sdk": "^2.5.0",
-    "@nuxt/kit": "^3.9.0",
-    "defu": "^6.1.3"
+    "@kinde-oss/kinde-typescript-sdk": "^2.6.2",
+    "@nuxt/kit": "^3.10.3",
+    "defu": "^6.1.4"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/eslint-config": "0.2.0",
     "@nuxt/module-builder": "0.5.5",
-    "@nuxt/schema": "3.9.3",
-    "@nuxt/test-utils": "3.10.0",
-    "@types/node": "20.11.20",
+    "@nuxt/schema": "3.10.3",
+    "@nuxt/test-utils": "3.11.0",
+    "@types/node": "20.11.23",
     "changelogen": "0.5.5",
     "eslint": "8.57.0",
-    "nuxt": "3.9.3",
-    "vitest": "1.2.2"
+    "nuxt": "3.10.3",
+    "vitest": "1.3.1"
   },
   "resolutions": {
-    "@nuxt/schema": "3.9.3",
+    "@nuxt/schema": "3.10.3",
     "@nuxtjs/kinde": "link:."
   }
 }
