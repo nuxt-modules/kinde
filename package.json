@@ -30,7 +30,9 @@
   "dependencies": {
     "@kinde-oss/kinde-typescript-sdk": "^2.6.2",
     "@nuxt/kit": "^3.10.3",
-    "defu": "^6.1.4"
+    "cookie-es": "^1.0.0",
+    "defu": "^6.1.4",
+    "pathe": "^1.1.2"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",

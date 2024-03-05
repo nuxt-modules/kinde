@@ -1,17 +1,17 @@
-import {
-  addServerHandler,
-  defineNuxtModule,
-  addPlugin,
-  createResolver,
-  addRouteMiddleware,
-  addImports,
-  addComponent,
-} from '@nuxt/kit'
+import { randomUUID } from 'node:crypto'
+import { readFile, writeFile } from 'node:fs/promises'
+
+import { addServerHandler, defineNuxtModule, addPlugin, createResolver, addRouteMiddleware, addImports, addComponent } from '@nuxt/kit'
 import { defu } from 'defu'
+import type { CookieSerializeOptions } from 'cookie-es'
+import { join } from 'pathe'
+
 import { version } from '../package.json'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
+  password: string
+  cookie: Partial<CookieSerializeOptions>
   middleware?: boolean
   handlers?: {
     callback?: string
@@ -38,6 +38,10 @@ export default defineNuxtModule<ModuleOptions>({
   },
   // Default configuration options of the Nuxt module
   defaults: nuxt => ({
+    password: process.env.NUXT_KINDE_PASSWORD || '',
+    cookie: {
+      sameSite: 'lax'
+    },
     middleware: true,
     authDomain: '',
     clientId: '',
@@ -47,8 +51,10 @@ export default defineNuxtModule<ModuleOptions>({
     postLoginRedirectURL: '',
     debug: nuxt.options.dev || nuxt.options.debug,
   }),
-  setup(options, nuxt) {
+  async setup (options, nuxt) {
     nuxt.options.runtimeConfig.kinde = defu(nuxt.options.runtimeConfig.kinde, {
+      password: options.password,
+      cookie: options.cookie as any,
       authDomain: options.authDomain,
       clientId: options.clientId,
       redirectURL: options.redirectURL,
@@ -56,6 +62,17 @@ export default defineNuxtModule<ModuleOptions>({
       postLoginRedirectURL: options.postLoginRedirectURL,
       clientSecret: options.clientSecret,
     })
+
+    // https://github.com/Atinux/nuxt-auth-utils/blob/main/src/module.ts#L71-L80
+    if (nuxt.options.dev && !nuxt.options.runtimeConfig.kinde.password) {
+      nuxt.options.runtimeConfig.kinde.password = randomUUID().replace(/-/g, '')
+      // Add it to .env
+      const envPath = join(nuxt.options.rootDir, '.env')
+      const envContent = await readFile(envPath, 'utf-8').catch(() => '')
+      if (!envContent.includes('NUXT_KINDE_PASSWORD')) {
+        await writeFile(envPath, `${envContent ? envContent + '\n' : envContent}NUXT_KINDE_PASSWORD=${nuxt.options.runtimeConfig.kinde.password}`, 'utf-8')
+      }
+    }
 
     nuxt.options.nitro.virtual ||= {}
     nuxt.options.nitro.virtual['kinde-version.mjs'] = () => `export const version = '${version}'`,

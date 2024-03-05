@@ -18,9 +18,15 @@ importers:
       '@nuxt/kit':
         specifier: ^3.10.3
         version: 3.10.3(rollup@3.29.4)
+      cookie-es:
+        specifier: ^1.0.0
+        version: 1.0.0
       defu:
         specifier: ^6.1.4
         version: 6.1.4
+      pathe:
+        specifier: ^1.1.2
+        version: 1.1.2
     devDependencies:
       '@nuxt/devtools':
         specifier: latest
@@ -3092,7 +3098,6 @@ packages:
 
   /cookie-es@1.0.0:
     resolution: {integrity: sha512-mWYvfOLrfEc996hlKcdABeIiPHUPC6DM2QYZdGGOvhOTbA3tjm2eBwqlJpoFdjC89NI4Qt6h0Pu06Mp+1Pj5OQ==}
-    dev: true
 
   /core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
