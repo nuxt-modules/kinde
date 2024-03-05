@@ -1,6 +1,30 @@
 # Changelog
 
 
+## v0.1.7
+
+[compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.6...v0.1.7)
+
+### 🚀 Enhancements
+
+- Expose health/debug endpoint to see configuration ([#52](https://github.com/nuxt-modules/kinde/pull/52))
+- Add `<LoginLink>` and `<RegisterLink>` components ([#51](https://github.com/nuxt-modules/kinde/pull/51))
+
+### 🩹 Fixes
+
+- Allow configuring cookie options + user-provided password ([#59](https://github.com/nuxt-modules/kinde/pull/59))
+
+### 🏡 Chore
+
+- Add typing for session config ([5f3918c](https://github.com/nuxt-modules/kinde/commit/5f3918c))
+- Update all dependencies ([ae84985](https://github.com/nuxt-modules/kinde/commit/ae84985))
+- Enable type testing step ([2ea4217](https://github.com/nuxt-modules/kinde/commit/2ea4217))
+
+### ❤️ Contributors
+
+- Daniel Roe ([@danielroe](http://github.com/danielroe))
+- Daniel Rivers ([@DanielRivers](http://github.com/DanielRivers))
+
 ## v0.1.6
 
 [compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.5...v0.1.6)
