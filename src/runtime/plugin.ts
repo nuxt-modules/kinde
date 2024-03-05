@@ -6,10 +6,10 @@ import type { AuthState } from './types'
 export default defineNuxtPlugin(async () => {
   const state = useState<AuthState>('auth', shallowRef)
   if (import.meta.server) {
-    const event = useRequestEvent()
-    const isLoggedIn = await event.context.kinde.isAuthenticated()
+    const kinde = useRequestEvent()!.context.kinde
+    const isLoggedIn = await kinde.isAuthenticated()
     state.value = isLoggedIn
-      ? { loggedIn: true, user: await event.context.kinde.getUserProfile() }
+      ? { loggedIn: true, user: await kinde.getUserProfile() }
       : { loggedIn: false, user: null }
   }
 

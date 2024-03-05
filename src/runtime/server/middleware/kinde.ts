@@ -6,14 +6,13 @@ import { getSession, updateSession, clearSession } from '#imports'
 
 export default defineEventHandler(async event => {
   const sessionManager = await createSessionManager(event)
-  event.context.kinde = { sessionManager }
+  const kindeContext = { sessionManager } as Record<string, any>
   const kindeClient = getKindeClient()
-  for (const key in kindeClient) {
-    event.context.kinde[key] = kindeClient[key].bind(
-      kindeClient,
-      sessionManager
-    )
+  for (const _key in kindeClient) {
+    const key = _key as keyof typeof kindeClient
+    kindeContext[key] = (kindeClient[key] as any).bind(kindeClient, sessionManager)
   }
+  event.context.kinde = kindeContext as any
 })
 
 async function createSessionManager(event: H3Event): Promise<SessionManager> {
