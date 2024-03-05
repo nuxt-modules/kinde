@@ -9,6 +9,6 @@ export default defineEventHandler(() => {
     postLoginRedirectURL: kinde.postLoginRedirectURL,
     logoutRedirectURL: kinde.logoutRedirectURL,
     clientID: kinde.clientId,
-    clientSecret: kinde.clientSecret.match('[a-z0-9]{32}') ? 'Set correctly' : 'Not set correctly',
+    clientSecret: kinde.clientSecret.match('[a-z0-9]{50}') ? 'Set correctly' : 'Not set correctly',
   };
 })
