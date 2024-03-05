@@ -4,7 +4,7 @@ import type { CookieSerializeOptions } from 'cookie-es'
 import { defineEventHandler } from 'h3'
 
 import { getKindeClient } from '../utils/client'
-import { getSession, updateSession, clearSession } from '#imports'
+import { getSession, updateSession, clearSession, useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(async event => {
   const sessionManager = await createSessionManager(event)
