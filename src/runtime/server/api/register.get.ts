@@ -1,4 +1,4 @@
-import { defineEventHandler, sendRedirect } from 'h3'
+import { defineEventHandler, sendRedirect, getQuery } from 'h3'
 import { getKindeClient } from '../utils/client'
 
 export default defineEventHandler(async event => {
