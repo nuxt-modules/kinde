@@ -74,6 +74,20 @@ describe('LoginLink', () => {
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?login_hint=test@testdomain.com"`)
   })
 
+  test('authUrlParams added to URL', async () => {
+    const wrapper = await mountSuspended(LoginLink, {
+      slots: {
+        default: () => 'Hello'
+      },
+      props: {
+        authUrlParams: {
+          connection_id: 'conn_1234'
+        }
+      }
+    })
+    expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?connection_id=conn_1234"`)
+  })
+
   test('do not authUrlParams added to URL', async () => {
     const wrapper = await mountSuspended(LoginLink, {
       slots: {
