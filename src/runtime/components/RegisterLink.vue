@@ -14,7 +14,7 @@ import { withQuery } from 'ufo'
 
 const props = defineProps<AuthURLOptions>()
 const href = computed(() => {
-  const { authUrlParams } = props
-  return withQuery('/api/register', authUrlParams || {})
+  const { authUrlParams, ...rest } = props
+  return withQuery('/api/register', {...authUrlParams, ...rest} || {})
 })
 </script>
