@@ -26,6 +26,7 @@ export interface ModuleOptions {
   redirectURL?: string
   logoutRedirectURL?: string
   postLoginRedirectURL?: string
+  audience?: string
   debug?: boolean
 }
 
@@ -49,6 +50,7 @@ export default defineNuxtModule<ModuleOptions>({
     redirectURL: '',
     logoutRedirectURL: '',
     postLoginRedirectURL: '',
+    audience: undefined,
     debug: nuxt.options.dev || nuxt.options.debug,
   }),
   async setup (options, nuxt) {
