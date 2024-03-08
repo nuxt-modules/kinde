@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       '@kinde-oss/kinde-typescript-sdk':
-        specifier: ^2.6.2
-        version: 2.6.2
+        specifier: ^2.7.1
+        version: 2.7.1
       '@nuxt/kit':
         specifier: ^3.10.3
         version: 3.10.3(rollup@3.29.4)
@@ -955,8 +955,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@kinde-oss/kinde-typescript-sdk@2.6.2:
-    resolution: {integrity: sha512-z46iSYFP9u2h7cfrDQ44yjKIeZ/8/49Q2d8VOdTrLM/3tR2cL4/dVfxuUXW3g564mDMNy/VEDy4iqJ0GYEoQEQ==}
+  /@kinde-oss/kinde-typescript-sdk@2.7.1:
+    resolution: {integrity: sha512-YIig6htu7MdlrZ3OJNkgzk1JFxiO29MJPfDZu9o/ohs7b/ZKBTKje4QTYG9tjX4ipE5KDONBFQs4YT8tHZU/UQ==}
     dependencies:
       jwt-decode: 4.0.0
       uncrypto: 0.1.3

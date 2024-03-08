@@ -28,7 +28,7 @@
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
-    "@kinde-oss/kinde-typescript-sdk": "^2.6.2",
+    "@kinde-oss/kinde-typescript-sdk": "^2.7.1",
     "@nuxt/kit": "^3.10.3",
     "cookie-es": "^1.0.0",
     "defu": "^6.1.4",
