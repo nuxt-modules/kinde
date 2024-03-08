@@ -1,6 +1,36 @@
 # Changelog
 
 
+## v0.1.9
+
+[compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.8...v0.1.9)
+
+### 🩹 Fixes
+
+- Add missing `getQuery` import ([#63](https://github.com/nuxt-modules/kinde/pull/63))
+
+### 🏡 Chore
+
+- **release:** V0.1.8 ([23d695a](https://github.com/nuxt-modules/kinde/commit/23d695a))
+
+### ❤️ Contributors
+
+- Joey Chilson ([@joeychilson](http://github.com/joeychilson))
+- Daniel Roe ([@danielroe](http://github.com/danielroe))
+
+## v0.1.8
+
+[compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.7...v0.1.8)
+
+### 🩹 Fixes
+
+- Missing import ([#60](https://github.com/nuxt-modules/kinde/pull/60))
+- Client secret regex ([#61](https://github.com/nuxt-modules/kinde/pull/61))
+
+### ❤️ Contributors
+
+- Daniel Rivers ([@DanielRivers](http://github.com/DanielRivers))
+
 ## v0.1.7
 
 [compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.6...v0.1.7)
