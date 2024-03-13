@@ -40,7 +40,9 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: nuxt => ({
     password: process.env.NUXT_KINDE_PASSWORD || '',
     cookie: {
-      sameSite: 'lax'
+      sameSite: 'lax',
+      secure: !nuxt.options.dev,
+      httpOnly: true,
     },
     middleware: true,
     authDomain: '',
