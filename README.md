@@ -50,9 +50,7 @@ Add the following configuration to your `.env` file replacing the values in `< >
 > **NOTE:** The Nuxt Kinde module requires the back-end web API keys
 
 ```bash
-## Example if wanting to use Management API
-NUXT_KINDE_AUDIANCE="https://<your_kinde_subdomain>.kinde.com/api"
-
+NUXT_KINDE_AUDIENCE="https://<your_kinde_subdomain>.kinde.com/api" # if you want to use the Management API
 NUXT_KINDE_AUTH_DOMAIN="https://<your_kinde_subdomain>.kinde.com"
 NUXT_KINDE_CLIENT_ID="<your_kinde_client_id>"
 NUXT_KINDE_CLIENT_SECRET="<your_kinde_client_secret>"
