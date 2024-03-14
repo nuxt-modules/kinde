@@ -8,11 +8,11 @@ import {
 import { getKindeClient } from '../server/utils/client';
 import type { KindeRouteRules } from '../types';
 
-function rejectNavigation(status: number, message: string) {
+function rejectNavigation(statusCode: number, message: string) {
   if (import.meta.server) {
     return createError({
-      statusCode: 401,
-      message: 'You must be logged in to access this page',
+      statusCode,
+      message,
     })
   }
   return abortNavigation()
