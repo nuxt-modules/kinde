@@ -29,12 +29,12 @@ export default defineNuxtRouteMiddleware(async() => {
     return rejectNavigation(401, 'You must be logged in to access this page')
   }
 
-  if (kindeConfig && kindeConfig) {
+  if (kindeConfig?.permissions) {
     const kinde = getKindeClient()
 
       const accessPermissions = kindeConfig.permissions
       const usersPermissions = await kinde.getPermissions(nuxt.ssrContext?.event.context.kinde.sessionManager!);
-      const hasCommonValue = accessPermissions?.some(item => usersPermissions.permissions.includes(item)) || [];
+      const hasCommonValue = accessPermissions?.some(item => usersPermissions.permissions.includes(item)) || false;
 
       if (!hasCommonValue) {
         if (kindeConfig.redirectUrl) {

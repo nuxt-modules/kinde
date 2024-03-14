@@ -64,7 +64,6 @@ export default defineNuxtModule<ModuleOptions>({
       logoutRedirectURL: options.logoutRedirectURL,
       postLoginRedirectURL: options.postLoginRedirectURL,
       clientSecret: options.clientSecret,
-      protectedServerRoutes: options.protectedServerRoutes
     })
 
     // https://github.com/Atinux/nuxt-auth-utils/blob/main/src/module.ts#L71-L80
@@ -150,7 +149,7 @@ export default defineNuxtModule<ModuleOptions>({
       name: 'RegisterLink',
       filePath: resolver.resolve('./runtime/components/RegisterLink'),
     })
-    extendTypes('nuxt-og-image', ({ typesPath }) => {
+    extendTypes('nuxt-kinde', ({ typesPath }) => {
       // need to map our components to types so we can import them
       return `
 declare module 'nitropack' {
@@ -160,6 +159,7 @@ declare module 'nitropack' {
   interface NitroRouteConfig {
     kinde?: import('${typesPath}').KindeRouteRules
   }
+}
 `
     })
 
