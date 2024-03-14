@@ -50,12 +50,13 @@ Add the following configuration to your `.env` file replacing the values in `< >
 > **NOTE:** The Nuxt Kinde module requires the back-end web API keys
 
 ```bash
-NUXT_KINDE_PASSWORD=<a random password which will be used to encrypt the session cookie>
+NUXT_KINDE_AUDIENCE="https://<your_kinde_subdomain>.kinde.com/api" # if you want to use the Management API
 NUXT_KINDE_AUTH_DOMAIN="https://<your_kinde_subdomain>.kinde.com"
 NUXT_KINDE_CLIENT_ID="<your_kinde_client_id>"
 NUXT_KINDE_CLIENT_SECRET="<your_kinde_client_secret>"
-NUXT_KINDE_REDIRECT_URL="http://localhost:3000/api/callback"
 NUXT_KINDE_LOGOUT_REDIRECT_URL="http://localhost:3000"
+NUXT_KINDE_REDIRECT_URL="http://localhost:3000/api/callback"
+NUXT_KINDE_PASSWORD=<a random password which will be used to encrypt the session cookie>
 NUXT_KINDE_POST_LOGIN_REDIRECT_URL="http://localhost:3000/dashboard"
 ```
 
