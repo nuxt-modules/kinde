@@ -26,6 +26,7 @@ export interface ModuleOptions {
   redirectURL?: string
   logoutRedirectURL?: string
   postLoginRedirectURL?: string
+  audience?: string
   debug?: boolean
 }
 
@@ -51,6 +52,7 @@ export default defineNuxtModule<ModuleOptions>({
     redirectURL: '',
     logoutRedirectURL: '',
     postLoginRedirectURL: '',
+    audience: '',
     debug: nuxt.options.dev || nuxt.options.debug,
   }),
   async setup (options, nuxt) {
@@ -63,6 +65,7 @@ export default defineNuxtModule<ModuleOptions>({
       logoutRedirectURL: options.logoutRedirectURL,
       postLoginRedirectURL: options.postLoginRedirectURL,
       clientSecret: options.clientSecret,
+      audience: options.audience,
     })
 
     // https://github.com/Atinux/nuxt-auth-utils/blob/main/src/module.ts#L71-L80
