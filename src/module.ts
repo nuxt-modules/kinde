@@ -7,7 +7,6 @@ import type { CookieSerializeOptions } from 'cookie-es'
 import { join } from 'pathe'
 
 import { version } from '../package.json'
-import { extendTypes } from './kit'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
