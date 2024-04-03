@@ -18,14 +18,7 @@
 1. Add `@nuxtjs/kinde` dependency to your project
 
 ```bash
-# Using pnpm
-pnpm add -D @nuxtjs/kinde
-
-# Using yarn
-yarn add --dev @nuxtjs/kinde
-
-# Using npm
-npm install --save-dev @nuxtjs/kinde
+npx nuxi@latest module add kinde
 ```
 
 2. Add `@nuxtjs/kinde` to the `modules` section of `nuxt.config.ts`
