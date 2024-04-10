@@ -1,5 +1,5 @@
+import type { NitroRouteRules } from 'nitropack'
 import { getKindeClient } from '../server/utils/client'
-import type { KindeRouteRules } from '../types'
 import {
   abortNavigation,
   createError,
@@ -20,10 +20,10 @@ function rejectNavigation(statusCode: number, message: string) {
 
 export default defineNuxtRouteMiddleware(async () => {
   const nuxt = useNuxtApp()
-  const kindeConfig: KindeRouteRules = nuxt.ssrContext?.event.context._nitro.routeRules.kinde
+  const kindeConfig: NitroRouteRules['kinde'] = nuxt.ssrContext?.event.context._nitro.routeRules.kinde
 
   if (!nuxt.$auth.loggedIn) {
-    if (kindeConfig.redirectUrl) {
+    if (kindeConfig?.redirectUrl) {
       return navigateTo(kindeConfig.redirectUrl)
     }
     return rejectNavigation(401, 'You must be logged in to access this page')

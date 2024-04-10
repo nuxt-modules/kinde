@@ -154,18 +154,24 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     addTypeTemplate({
-      filename: `module/nuxt-kinde.d.ts`,
+      filename: `types/nuxt-kinde.d.ts`,
       getContents: () => {
         return `
-      declare module 'nitropack' {
-        interface NitroRouteRules {
-          kinde?: import('module/nuxt-kinde.d.ts').KindeRouteRules
-        }
-        interface NitroRouteConfig {
-          kinde?: import('module/nuxt-kinde.d.ts').KindeRouteRules
-        }
-      }
-      `
+interface KindeRouteRules {
+  permissions: string[]
+  redirectUrl: string
+}
+
+declare module 'nitropack' {
+  interface NitroRouteRules {
+    kinde?: KindeRouteRules
+  }
+  interface NitroRouteConfig {
+    kinde?: KindeRouteRules
+  }
+}
+export {}
+`
       },
     })
   },
