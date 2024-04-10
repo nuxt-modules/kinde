@@ -1,5 +1,5 @@
-import { useNuxtApp, useRequestEvent } from '#imports'
 import type { AuthState } from './types'
+import { useNuxtApp, useRequestEvent } from '#imports'
 
 export const useAuth = () => {
   return useNuxtApp().$auth as AuthState

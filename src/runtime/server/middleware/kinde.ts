@@ -6,7 +6,7 @@ import { defineEventHandler } from 'h3'
 import { getKindeClient } from '../utils/client'
 import { getSession, updateSession, clearSession, useRuntimeConfig } from '#imports'
 
-export default defineEventHandler(async event => {
+export default defineEventHandler(async (event) => {
   const sessionManager = await createSessionManager(event)
   const kindeContext = { sessionManager } as Record<string, any>
   const kindeClient = getKindeClient()
@@ -17,7 +17,7 @@ export default defineEventHandler(async event => {
   event.context.kinde = kindeContext as any
 })
 
-async function createSessionManager (event: H3Event): Promise<SessionManager> {
+async function createSessionManager(event: H3Event): Promise<SessionManager> {
   // TODO: improve memory session in future
   const keysInCookie = ['refresh_token', 'access_token', 'ac-state-key']
   const memorySession: Record<(typeof keysInCookie)[number], unknown> = {}
@@ -30,29 +30,31 @@ async function createSessionManager (event: H3Event): Promise<SessionManager> {
   } satisfies SessionConfig
 
   return {
-    async getSessionItem (itemKey) {
+    async getSessionItem(itemKey) {
       const session = await getSession(event, sessionConfig)
       return session.data[itemKey] || memorySession[itemKey]
     },
-    async setSessionItem (itemKey, itemValue) {
+    async setSessionItem(itemKey, itemValue) {
       if (keysInCookie.includes(itemKey)) {
         await updateSession(event, sessionConfig, {
           [itemKey]: itemValue,
         })
-      } else {
+      }
+      else {
         memorySession[itemKey] = itemValue
       }
     },
-    async removeSessionItem (itemKey) {
+    async removeSessionItem(itemKey) {
       if (keysInCookie.includes(itemKey)) {
         await updateSession(event, sessionConfig, {
           [itemKey]: undefined,
         })
-      } else {
+      }
+      else {
         delete memorySession[itemKey]
       }
     },
-    async destroySession () {
+    async destroySession() {
       for (const key in memorySession) {
         delete memorySession[key]
       }
