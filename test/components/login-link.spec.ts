@@ -6,8 +6,8 @@ describe('LoginLink', () => {
   test('is a Vue instance', async () => {
     const wrapper = await mountSuspended(LoginLink, {
       slots: {
-        default: () => 'Hello'
-      }
+        default: () => 'Hello',
+      },
     })
     expect(wrapper.vm).toBeTruthy()
   })
@@ -15,11 +15,11 @@ describe('LoginLink', () => {
   test('org_code added to URL', async () => {
     const wrapper = await mountSuspended(LoginLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
-        org_code: '123'
-      }
+        org_code: '123',
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?org_code=123"`)
   })
@@ -27,11 +27,11 @@ describe('LoginLink', () => {
   test('org_name added to URL', async () => {
     const wrapper = await mountSuspended(LoginLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
-        org_name: 'NAME123'
-      }
+        org_name: 'NAME123',
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?org_name=NAME123"`)
   })
@@ -39,11 +39,11 @@ describe('LoginLink', () => {
   test('state added to URL', async () => {
     const wrapper = await mountSuspended(LoginLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
-        state: 'ASDBED'
-      }
+        state: 'ASDBED',
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?state=ASDBED"`)
   })
@@ -51,11 +51,11 @@ describe('LoginLink', () => {
   test('post_login_redirect_url added to URL', async () => {
     const wrapper = await mountSuspended(LoginLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
-        post_login_redirect_url: 'http://example.com/redirect'
-      }
+        post_login_redirect_url: 'http://example.com/redirect',
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?post_login_redirect_url=http:%2F%2Fexample.com%2Fredirect"`)
   })
@@ -63,13 +63,13 @@ describe('LoginLink', () => {
   test('authUrlParams added to URL', async () => {
     const wrapper = await mountSuspended(LoginLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
         authUrlParams: {
-          login_hint: 'test@testdomain.com'
-        }
-      }
+          login_hint: 'test@testdomain.com',
+        },
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?login_hint=test@testdomain.com"`)
   })
@@ -77,13 +77,13 @@ describe('LoginLink', () => {
   test('authUrlParams added to URL', async () => {
     const wrapper = await mountSuspended(LoginLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
         authUrlParams: {
-          connection_id: 'conn_1234'
-        }
-      }
+          connection_id: 'conn_1234',
+        },
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?connection_id=conn_1234"`)
   })
@@ -91,13 +91,13 @@ describe('LoginLink', () => {
   test('do not authUrlParams added to URL', async () => {
     const wrapper = await mountSuspended(LoginLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
         authUrlParams: {
-          login_hint: 'test@testdomain.com'
-        }
-      }
+          login_hint: 'test@testdomain.com',
+        },
+      },
     })
     expect(wrapper.vm.href.includes('authUrlParams')).toBeFalsy()
   })
@@ -105,8 +105,8 @@ describe('LoginLink', () => {
   test('slot content rendered', async () => {
     const wrapper = await mountSuspended(LoginLink, {
       slots: {
-        default: () => 'Hello'
-      }
+        default: () => 'Hello',
+      },
     })
     expect(wrapper.element.textContent).toEqual('Hello')
   })

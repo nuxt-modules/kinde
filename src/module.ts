@@ -35,7 +35,7 @@ export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: '@nuxtjs/kinde',
     configKey: 'kinde',
-    version
+    version,
   },
   // Default configuration options of the Nuxt module
   defaults: nuxt => ({
@@ -55,9 +55,10 @@ export default defineNuxtModule<ModuleOptions>({
     audience: '',
     debug: nuxt.options.dev || nuxt.options.debug,
   }),
-  async setup (options, nuxt) {
+  async setup(options, nuxt) {
     nuxt.options.runtimeConfig.kinde = defu(nuxt.options.runtimeConfig.kinde, {
       password: options.password,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       cookie: options.cookie as any,
       authDomain: options.authDomain,
       clientId: options.clientId,
@@ -94,36 +95,36 @@ export default defineNuxtModule<ModuleOptions>({
     addServerHandler({
       route: '/api/callback',
       handler:
-        options.handlers?.callback ||
-        resolver.resolve('./runtime/server/api/callback.get'),
+        options.handlers?.callback
+        || resolver.resolve('./runtime/server/api/callback.get'),
     })
     addServerHandler({
       route: '/api/login',
       handler:
-        options.handlers?.login ||
-        resolver.resolve('./runtime/server/api/login.get'),
+        options.handlers?.login
+        || resolver.resolve('./runtime/server/api/login.get'),
     })
     addServerHandler({
       route: '/api/register',
       handler:
-        options.handlers?.register ||
-        resolver.resolve('./runtime/server/api/register.get'),
+        options.handlers?.register
+        || resolver.resolve('./runtime/server/api/register.get'),
     })
 
     if (options.debug) {
       addServerHandler({
         route: '/api/health',
         handler:
-          options.handlers?.health ||
-          resolver.resolve('./runtime/server/api/health.get'),
+          options.handlers?.health
+          || resolver.resolve('./runtime/server/api/health.get'),
       })
     }
 
     addServerHandler({
       route: '/api/logout',
       handler:
-        options.handlers?.logout ||
-        resolver.resolve('./runtime/server/api/logout.get'),
+        options.handlers?.logout
+        || resolver.resolve('./runtime/server/api/logout.get'),
     })
 
     // Composables
@@ -153,4 +154,3 @@ export default defineNuxtModule<ModuleOptions>({
     })
   },
 })
-

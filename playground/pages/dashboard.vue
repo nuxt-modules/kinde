@@ -32,6 +32,5 @@ const client = useKindeClient()
 const { data: permissions } = await useAsyncData(async () => {
   const { permissions } = await client?.getPermissions() ?? {}
   return permissions
-});
-
+})
 </script>
