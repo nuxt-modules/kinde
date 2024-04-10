@@ -6,8 +6,8 @@ describe('RegisterLink', () => {
   test('is a Vue instance', async () => {
     const wrapper = await mountSuspended(RegisterLink, {
       slots: {
-        default: () => 'Hello'
-      }
+        default: () => 'Hello',
+      },
     })
     expect(wrapper.vm).toBeTruthy()
   })
@@ -15,11 +15,11 @@ describe('RegisterLink', () => {
   test('org_code added to URL', async () => {
     const wrapper = await mountSuspended(RegisterLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
-        org_code: '123'
-      }
+        org_code: '123',
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?org_code=123&is_create_org=false"`)
   })
@@ -27,11 +27,11 @@ describe('RegisterLink', () => {
   test('org_name added to URL', async () => {
     const wrapper = await mountSuspended(RegisterLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
-        org_name: 'NAME123'
-      }
+        org_name: 'NAME123',
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?org_name=NAME123&is_create_org=false"`)
   })
@@ -39,11 +39,11 @@ describe('RegisterLink', () => {
   test('state added to URL', async () => {
     const wrapper = await mountSuspended(RegisterLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
-        state: 'ASDBED'
-      }
+        state: 'ASDBED',
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?state=ASDBED&is_create_org=false"`)
   })
@@ -51,11 +51,11 @@ describe('RegisterLink', () => {
   test('post_login_redirect_url added to URL', async () => {
     const wrapper = await mountSuspended(RegisterLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
-        post_login_redirect_url: 'http://example.com/redirect'
-      }
+        post_login_redirect_url: 'http://example.com/redirect',
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?post_login_redirect_url=http:%2F%2Fexample.com%2Fredirect&is_create_org=false"`)
   })
@@ -63,26 +63,25 @@ describe('RegisterLink', () => {
   test('authUrlParams added to URL', async () => {
     const wrapper = await mountSuspended(RegisterLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
         authUrlParams: {
-          login_hint: 'test@testdomain.com'
-        }
-      }
+          login_hint: 'test@testdomain.com',
+        },
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?login_hint=test@testdomain.com&is_create_org=false"`)
   })
 
-
   test('is_create_org added to URL', async () => {
     const wrapper = await mountSuspended(RegisterLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
-        is_create_org: true
-      }
+        is_create_org: true,
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?is_create_org=true"`)
   })
@@ -90,11 +89,11 @@ describe('RegisterLink', () => {
   test('start_page added to URL', async () => {
     const wrapper = await mountSuspended(RegisterLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
-        start_page: 'register'
-      }
+        start_page: 'register',
+      },
     })
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?start_page=register&is_create_org=false"`)
   })
@@ -102,13 +101,13 @@ describe('RegisterLink', () => {
   test('do not authUrlParams added to URL', async () => {
     const wrapper = await mountSuspended(RegisterLink, {
       slots: {
-        default: () => 'Hello'
+        default: () => 'Hello',
       },
       props: {
         authUrlParams: {
-          login_hint: 'test@testdomain.com'
-        }
-      }
+          login_hint: 'test@testdomain.com',
+        },
+      },
     })
     expect(wrapper.vm.href.includes('authUrlParams')).toBeFalsy()
   })
@@ -116,8 +115,8 @@ describe('RegisterLink', () => {
   test('slot content rendered', async () => {
     const wrapper = await mountSuspended(RegisterLink, {
       slots: {
-        default: () => 'Hello'
-      }
+        default: () => 'Hello',
+      },
     })
     expect(wrapper.element.textContent).toEqual('Hello')
   })

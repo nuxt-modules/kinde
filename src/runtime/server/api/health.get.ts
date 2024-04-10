@@ -1,6 +1,6 @@
 import { defineEventHandler } from 'h3'
-import { useRuntimeConfig } from '#imports'
 import { validateClientSecret } from '@kinde-oss/kinde-typescript-sdk'
+import { useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(() => {
   const { kinde } = useRuntimeConfig()
@@ -11,5 +11,5 @@ export default defineEventHandler(() => {
     logoutRedirectURL: kinde.logoutRedirectURL,
     clientID: kinde.clientId,
     clientSecret: validateClientSecret(kinde.clientSecret) ? 'Set correctly' : 'Not set correctly',
-  };
+  }
 })

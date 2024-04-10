@@ -1,9 +1,8 @@
 import { createKindeServerClient, GrantType } from '@kinde-oss/kinde-typescript-sdk'
 import type { ACClient } from '@kinde-oss/kinde-typescript-sdk'
-import { useRuntimeConfig } from '#imports'
-
 // @ts-expect-error virtual file
 import { version as frameworkVersion } from 'kinde-version.mjs'
+import { useRuntimeConfig } from '#imports'
 
 let kindeClient: ACClient
 

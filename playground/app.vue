@@ -74,5 +74,4 @@
 import '~/assets/css/globals.css'
 
 const auth = useAuth()
-
 </script>

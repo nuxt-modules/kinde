@@ -4,10 +4,10 @@ import { useRuntimeConfig } from '#imports'
 
 const config = useRuntimeConfig()
 
-export default defineEventHandler(async event => {
+export default defineEventHandler(async (event) => {
   await getKindeClient().handleRedirectToApp(
     event.context.kinde!.sessionManager,
-    getRequestURL(event)
+    getRequestURL(event),
   )
   await sendRedirect(event, config.kinde.postLoginRedirectURL || '/')
 })
