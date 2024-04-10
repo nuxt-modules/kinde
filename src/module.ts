@@ -58,6 +58,7 @@ export default defineNuxtModule<ModuleOptions>({
   async setup(options, nuxt) {
     nuxt.options.runtimeConfig.kinde = defu(nuxt.options.runtimeConfig.kinde, {
       password: options.password,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       cookie: options.cookie as any,
       authDomain: options.authDomain,
       clientId: options.clientId,
