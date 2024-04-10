@@ -1,4 +1,5 @@
 import type { NitroRouteRules } from 'nitropack'
+import { getRouteRules } from 'nitropack/runtime'
 import { getKindeClient } from '../server/utils/client'
 import {
   abortNavigation,
@@ -20,7 +21,8 @@ function rejectNavigation(statusCode: number, message: string) {
 
 export default defineNuxtRouteMiddleware(async () => {
   const nuxt = useNuxtApp()
-  const kindeConfig: NitroRouteRules['kinde'] = nuxt.ssrContext?.event.context._nitro.routeRules.kinde
+  getRouteRules
+  const kindeConfig: NitroRouteRules['kinde'] = getRouteRules(nuxt.ssrContext!.event).kinde
 
   if (!nuxt.$auth.loggedIn) {
     if (kindeConfig?.redirectUrl) {
