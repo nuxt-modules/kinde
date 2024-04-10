@@ -28,30 +28,30 @@
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
-    "@kinde-oss/kinde-typescript-sdk": "^2.7.2",
-    "@nuxt/kit": "^3.11.0",
-    "cookie-es": "^1.0.0",
+    "@kinde-oss/kinde-typescript-sdk": "^2.8.0",
+    "@nuxt/kit": "^3.11.2",
+    "cookie-es": "^1.1.0",
     "defu": "^6.1.4",
     "pathe": "^1.1.2"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^1.0.8",
-    "@nuxt/eslint-config": "0.3.5",
+    "@nuxt/devtools": "1.0.8",
+    "@nuxt/eslint-config": "0.3.6",
     "@nuxt/module-builder": "0.5.5",
-    "@nuxt/schema": "3.11.0",
+    "@nuxt/schema": "3.11.2",
     "@nuxt/test-utils": "3.12.0",
-    "@types/node": "20.11.30",
+    "@types/node": "20.12.7",
     "@vue/test-utils": "2.4.5",
     "changelogen": "0.5.5",
     "eslint": "9.0.0",
-    "happy-dom": "14.2.0",
-    "nuxt": "3.11.0",
-    "typescript": "5.4.2",
+    "happy-dom": "14.7.1",
+    "nuxt": "3.11.2",
+    "typescript": "5.4.5",
     "vitest": "1.4.0",
-    "vue-tsc": "2.0.7"
+    "vue-tsc": "2.0.12"
   },
   "resolutions": {
-    "@nuxt/schema": "3.11.0",
+    "@nuxt/schema": "3.11.2",
     "@nuxtjs/kinde": "link:."
   }
 }
