@@ -21,7 +21,6 @@ function rejectNavigation(statusCode: number, message: string) {
 
 export default defineNuxtRouteMiddleware(async () => {
   const nuxt = useNuxtApp()
-  getRouteRules
   const kindeConfig: NitroRouteRules['kinde'] = getRouteRules(nuxt.ssrContext!.event).kinde
 
   if (!nuxt.$auth.loggedIn) {
