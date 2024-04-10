@@ -4,7 +4,6 @@ import type { ACClient } from '@kinde-oss/kinde-typescript-sdk'
 import { version as frameworkVersion } from 'kinde-version.mjs'
 import { useRuntimeConfig } from '#imports'
 
-
 let kindeClient: ACClient
 
 export const getKindeClient = () => {
