@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v0.1.10
+
+[compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.9...v0.1.10)
+
+### 🚀 Enhancements
+
+- Add audience support and pass `authUrlParams` correctly ([#66](https://github.com/nuxt-modules/kinde/pull/66))
+
+### 🩹 Fixes
+
+- Set `secure` (in prod) and `httpOnly` cookie options ([#69](https://github.com/nuxt-modules/kinde/pull/69))
+- Add missing import ([99bb5e6](https://github.com/nuxt-modules/kinde/commit/99bb5e6))
+
+### 📖 Documentation
+
+- Use new `nuxi module add` command in installation ([#80](https://github.com/nuxt-modules/kinde/pull/80))
+
+### 🏡 Chore
+
+- Migrate to eslint v9 ([#84](https://github.com/nuxt-modules/kinde/pull/84))
+- Bump dependencies ([c522546](https://github.com/nuxt-modules/kinde/commit/c522546))
+- Dedupe lockfile ([476789b](https://github.com/nuxt-modules/kinde/commit/476789b))
+
+### ❤️ Contributors
+
+- Daniel Roe ([@danielroe](http://github.com/danielroe))
+- Daniel Rivers ([@DanielRivers](http://github.com/DanielRivers))
+
 ## v0.1.9
 
 [compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.8...v0.1.9)
