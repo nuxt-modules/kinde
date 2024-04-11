@@ -74,7 +74,7 @@ importers:
   playground:
     devDependencies:
       '@nuxt/devtools':
-        specifier: ^1.0.8
+        specifier: 1.0.8
         version: 1.0.8(nuxt@3.11.2)(rollup@3.29.4)(vite@5.2.8)
       '@nuxtjs/kinde':
         specifier: link:..
@@ -86,7 +86,7 @@ importers:
         specifier: ^3.4.21
         version: 3.4.21(typescript@5.4.5)
       vue-router:
-        specifier: ^4.3.0
+        specifier: 4.3.0
         version: 4.3.0(vue@3.4.21)
 
 packages:
