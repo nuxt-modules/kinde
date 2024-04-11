@@ -1,5 +1,6 @@
 import { defineEventHandler, sendRedirect, getQuery } from 'h3'
 import { getKindeClient } from '../utils/client'
+import { useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(async (event) => {
   const { kinde: kindeSettings } = useRuntimeConfig()
