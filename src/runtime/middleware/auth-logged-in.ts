@@ -35,7 +35,7 @@ export default defineNuxtRouteMiddleware(async () => {
   if (kindeConfig?.permissions) {
     const usersPermissions = await nuxt.ssrContext!.event.context.kinde.getPermissions()
 
-    if (!kindeConfig.permissions?.some(item => usersPermissions.permissions.includes(item))) {
+    if (!kindeConfig.permissions.some(item => usersPermissions.permissions.includes(item))) {
       return denyAccess()
     }
   }
