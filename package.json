@@ -2,7 +2,10 @@
   "name": "@nuxtjs/kinde",
   "version": "0.1.10",
   "description": "Nuxt integration for Kinde authentication",
-  "repository": "nuxt-modules/kinde",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxt-modules/kinde.git"
+  },
   "license": "MIT",
   "type": "module",
   "exports": {
