@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import { readFile, writeFile } from 'node:fs/promises'
 
-import { addServerHandler, defineNuxtModule, addPlugin, createResolver, addRouteMiddleware, addImports, addComponent } from '@nuxt/kit'
+import { addServerHandler, defineNuxtModule, addPlugin, createResolver, addRouteMiddleware, addImports, addComponent, addTypeTemplate } from '@nuxt/kit'
 import { defu } from 'defu'
 import type { CookieSerializeOptions } from 'cookie-es'
 import { join } from 'pathe'
@@ -151,6 +151,28 @@ export default defineNuxtModule<ModuleOptions>({
     addComponent({
       name: 'RegisterLink',
       filePath: resolver.resolve('./runtime/components/RegisterLink'),
+    })
+
+    addTypeTemplate({
+      filename: `types/nuxt-kinde.d.ts`,
+      getContents: () => {
+        return `
+interface KindeRouteRules {
+  permissions: string[]
+  redirectUrl: string
+}
+
+declare module 'nitropack' {
+  interface NitroRouteRules {
+    kinde?: KindeRouteRules
+  }
+  interface NitroRouteConfig {
+    kinde?: KindeRouteRules
+  }
+}
+export {}
+`
+      },
     })
   },
 })
