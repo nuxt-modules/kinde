@@ -56,5 +56,6 @@
   "resolutions": {
     "@nuxt/schema": "3.11.2",
     "@nuxtjs/kinde": "link:."
-  }
+  },
+  "packageManager": "pnpm@9.3.0"
 }
