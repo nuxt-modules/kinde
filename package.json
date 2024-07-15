@@ -51,7 +51,7 @@
     "nuxt": "3.12.1",
     "typescript": "5.4.5",
     "vitest": "2.0.2",
-    "vue-tsc": "2.0.21"
+    "vue-tsc": "2.0.26"
   },
   "resolutions": {
     "@nuxt/schema": "3.12.1",
