@@ -13,6 +13,13 @@ export interface ModuleOptions {
   password: string
   cookie: Partial<CookieSerializeOptions>
   middleware?: boolean
+  apiRoutes?: {
+    callback?: string
+    login?: string
+    logout?: string
+    register?: string
+    health?: string
+  }
   handlers?: {
     callback?: string
     login?: string
@@ -65,6 +72,14 @@ export default defineNuxtModule<ModuleOptions>({
       redirectURL: options.redirectURL,
       logoutRedirectURL: options.logoutRedirectURL,
       postLoginRedirectURL: options.postLoginRedirectURL,
+      // TODO: Fix typing for apiRoutes. Currently it shows up as any, but it should be string | undefined
+      apiRoutes: {
+        callback: options.apiRoutes?.callback,
+        login: options.apiRoutes?.login,
+        register: options.apiRoutes?.register,
+        health: options.apiRoutes?.health,
+        logout: options.apiRoutes?.logout,
+      },
       clientSecret: options.clientSecret,
       audience: options.audience,
     })
@@ -93,19 +108,19 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     addServerHandler({
-      route: '/api/callback',
+      route: options.apiRoutes?.callback || '/api/callback',
       handler:
         options.handlers?.callback
         || resolver.resolve('./runtime/server/api/callback.get'),
     })
     addServerHandler({
-      route: '/api/login',
+      route: options.apiRoutes?.login || '/api/login',
       handler:
         options.handlers?.login
         || resolver.resolve('./runtime/server/api/login.get'),
     })
     addServerHandler({
-      route: '/api/register',
+      route: options.apiRoutes?.register || '/api/register',
       handler:
         options.handlers?.register
         || resolver.resolve('./runtime/server/api/register.get'),
@@ -113,7 +128,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     if (options.debug) {
       addServerHandler({
-        route: '/api/health',
+        route: options.apiRoutes?.health || '/api/health',
         handler:
           options.handlers?.health
           || resolver.resolve('./runtime/server/api/health.get'),
@@ -121,7 +136,7 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     addServerHandler({
-      route: '/api/logout',
+      route: options.apiRoutes?.logout || '/api/logout',
       handler:
         options.handlers?.logout
         || resolver.resolve('./runtime/server/api/logout.get'),

@@ -11,10 +11,14 @@
 import type { LoginURLOptions } from '@kinde-oss/kinde-typescript-sdk'
 import { computed } from 'vue'
 import { withQuery } from 'ufo'
+import { useRuntimeConfig } from '#app'
 
 const props = defineProps<LoginURLOptions>()
 const href = computed(() => {
   const { authUrlParams, ..._authUrlParams } = props
-  return withQuery('/api/login', { ...authUrlParams, ..._authUrlParams })
+  return withQuery(useRuntimeConfig().kinde.apiRoutes.login || '/api/login', {
+    ...authUrlParams,
+    ..._authUrlParams,
+  })
 })
 </script>
