@@ -34,6 +34,15 @@ export default defineNuxtConfig({
     //
     // enable the debug `/api/health` endpoint
     // debug: true,
+    // 
+    // Set custom apiRoutes in case you use any of the default routes for other purposes
+    // apiRoutes: {
+    //   callback: '/api/callback',
+    //   login: '/api/login',
+    //   register: '/api/register',
+    //   health: '/api/health',
+    //   logout: '/api/logout'
+    // }
   }
 })
 ```
