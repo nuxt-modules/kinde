@@ -1,7 +1,8 @@
-import { defineEventHandler } from 'h3'
+
+import { defineEventHandler, readBody } from 'h3'
 import type { NitroRouteRules } from 'nitropack'
 import type { AccessResponse } from '../../types'
-import { useRuntimeConfig, readBody } from '#imports'
+import { useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(async (event): Promise<AccessResponse> => {
   const { kinde: kindeSettings, ...rest } = useRuntimeConfig()
