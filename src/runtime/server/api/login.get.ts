@@ -5,14 +5,7 @@ import { useRuntimeConfig } from '#imports'
 export default defineEventHandler(async (event) => {
   const { kinde: kindeSettings } = useRuntimeConfig()
   const query: Record<string, string> = getQuery(event)
-
-  const sessionManager = event.context.kinde.sessionManager
-
-  if (query.postLoginRedirectURL) {
-    sessionManager.setSessionItem('post-login-redirect-url', query.postLoginRedirectURL)
-  }
-
-  const loginURL = await getKindeClient().login(sessionManager, {
+  const loginURL = await getKindeClient().login(event.context.kinde.sessionManager, {
     authUrlParams: {
       audience: kindeSettings.audience,
       ...query,
