@@ -1,9 +1,4 @@
-import {
-  abortNavigation,
-  createError,
-  defineNuxtRouteMiddleware,
-  useNuxtApp,
-} from '#imports'
+import { abortNavigation, createError, defineNuxtRouteMiddleware, useNuxtApp } from '#imports'
 
 export default defineNuxtRouteMiddleware(() => {
   // @ts-expect-error will be fixed in Nuxt v3.13
