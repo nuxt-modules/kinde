@@ -13,7 +13,7 @@ export interface ModuleOptions {
   password: string
   cookie: Partial<CookieSerializeOptions>
   middleware?: boolean
-  apiRoutes?: {
+  endpoints?: {
     callback?: string
     login?: string
     logout?: string
@@ -52,7 +52,7 @@ export default defineNuxtModule<ModuleOptions>({
       secure: !nuxt.options.dev,
       httpOnly: true,
     },
-    apiRoutes: {
+    endpoints: {
       callback: '/api/callback',
       login: '/api/login',
       register: '/api/register',
@@ -85,7 +85,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     addTemplate({
       filename: 'kinde-routes.config.mjs',
-      getContents: () => `export default ${JSON.stringify(options.apiRoutes)}`,
+      getContents: () => `export default ${JSON.stringify(options.endpoints)}`,
     })
 
     // https://github.com/Atinux/nuxt-auth-utils/blob/main/src/module.ts#L71-L80
@@ -112,19 +112,19 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     addServerHandler({
-      route: options.apiRoutes!.callback!,
+      route: options.endpoints!.callback!,
       handler:
         options.handlers?.callback
         || resolver.resolve('./runtime/server/api/callback.get'),
     })
     addServerHandler({
-      route: options.apiRoutes!.login!,
+      route: options.endpoints!.login!,
       handler:
         options.handlers?.login
         || resolver.resolve('./runtime/server/api/login.get'),
     })
     addServerHandler({
-      route: options.apiRoutes!.register!,
+      route: options.endpoints!.register!,
       handler:
         options.handlers?.register
         || resolver.resolve('./runtime/server/api/register.get'),
@@ -132,7 +132,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     if (options.debug) {
       addServerHandler({
-        route: options.apiRoutes!.health!,
+        route: options.endpoints!.health!,
         handler:
           options.handlers?.health
           || resolver.resolve('./runtime/server/api/health.get'),
@@ -140,7 +140,7 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     addServerHandler({
-      route: options.apiRoutes!.logout!,
+      route: options.endpoints!.logout!,
       handler:
         options.handlers?.logout
         || resolver.resolve('./runtime/server/api/logout.get'),
