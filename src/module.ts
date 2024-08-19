@@ -81,7 +81,7 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     nuxt.options.nitro.virtual ||= {}
-    nuxt.options.nitro.virtual['kinde-version.mjs'] = () => `export const version = '${version}'`,
+    nuxt.options.nitro.virtual['kinde-version.mjs'] = () => `export const version = '${version}'`
 
     // Do not add the extension since the `.ts` will be transpiled to `.mjs` after `npm run prepack`
     addPlugin(resolver.resolve('./runtime/plugin'))
