@@ -1,4 +1,3 @@
-import type { AuthState } from '../types'
 import {
   abortNavigation,
   createError,
@@ -7,7 +6,8 @@ import {
 } from '#imports'
 
 export default defineNuxtRouteMiddleware(() => {
-  if ((useNuxtApp().$auth as AuthState).loggedIn) {
+  // @ts-expect-error will be fixed in Nuxt v3.13
+  if (useNuxtApp().$auth.loggedIn) {
     if (import.meta.server) {
       return createError({
         statusCode: 401,

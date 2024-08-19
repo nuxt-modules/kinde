@@ -1,4 +1,3 @@
-
 import { defineEventHandler, readBody } from 'h3'
 import type { NitroRouteRules } from 'nitropack'
 import type { AccessResponse } from '../../types'
@@ -8,7 +7,7 @@ export default defineEventHandler(async (event): Promise<AccessResponse> => {
   const { kinde: kindeSettings, ...rest } = useRuntimeConfig()
   const body = await readBody(event)
 
-  const routeRules: NitroRouteRules['kinde'] = rest.nitro.routeRules?.[body.path]?.kinde
+  const routeRules: NitroRouteRules['kinde'] = rest.nitro?.routeRules?.[body.path]?.kinde
 
   if (!routeRules) {
     return {
