@@ -1,4 +1,5 @@
 import type { NitroRouteRules } from 'nitropack'
+import type { AccessResponse } from '../types'
 import {
   abortNavigation,
   createError,
@@ -18,7 +19,10 @@ function rejectNavigation(statusCode: number, message: string) {
   return abortNavigation()
 }
 
-export default defineNuxtRouteMiddleware(async () => {
+export default defineNuxtRouteMiddleware(async (to, from) => {
+  if (to.path === from.path && import.meta.client) {
+    return
+  }
   const nuxt = useNuxtApp()
   const kindeConfig: NitroRouteRules['kinde'] = (await getRouteRules(nuxt.ssrContext?.event.path ?? '')).kinde
 
@@ -27,6 +31,16 @@ export default defineNuxtRouteMiddleware(async () => {
       return navigateTo(kindeConfig.redirectUrl)
     }
     return rejectNavigation(401, 'You must be logged in to access this page')
+  }
+
+  if (import.meta.client) {
+    const fetchResult = await $fetch<AccessResponse>('/api/access', { method: 'POST', body: JSON.stringify({
+      path: to.path,
+    }) })
+    if (!fetchResult.access && fetchResult.redirectUrl) {
+      window.location.href = fetchResult.redirectUrl
+    }
+    return
   }
 
   if (!nuxt.$auth.loggedIn) {

@@ -19,6 +19,7 @@ export interface ModuleOptions {
     logout?: string
     register?: string
     health?: string
+    access?: string
   }
   authDomain?: string
   clientId?: string
@@ -126,6 +127,14 @@ export default defineNuxtModule<ModuleOptions>({
         options.handlers?.logout
         || resolver.resolve('./runtime/server/api/logout.get'),
     })
+
+    addServerHandler({
+      route: '/api/access',
+      handler:
+        options.handlers?.access
+        || resolver.resolve('./runtime/server/api/access.post'),
+    })
+
 
     // Composables
     addImports({ name: 'useAuth', as: 'useAuth', from: resolver.resolve('./runtime/composables') })
