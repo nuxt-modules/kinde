@@ -135,7 +135,6 @@ export default defineNuxtModule<ModuleOptions>({
         || resolver.resolve('./runtime/server/api/access.post'),
     })
 
-
     // Composables
     addImports({ name: 'useAuth', as: 'useAuth', from: resolver.resolve('./runtime/composables') })
     addImports({ name: 'useKindeClient', as: 'useKindeClient', from: resolver.resolve('./runtime/composables') })
