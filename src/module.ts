@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import { readFile, writeFile } from 'node:fs/promises'
 
-import { addServerHandler, defineNuxtModule, addPlugin, createResolver, addRouteMiddleware, addImports, addComponent } from '@nuxt/kit'
+import { addServerHandler, defineNuxtModule, addPlugin, createResolver, addRouteMiddleware, addImports, addComponent, addTemplate } from '@nuxt/kit'
 import { defu } from 'defu'
 import type { CookieSerializeOptions } from 'cookie-es'
 import { join } from 'pathe'
@@ -52,6 +52,13 @@ export default defineNuxtModule<ModuleOptions>({
       secure: !nuxt.options.dev,
       httpOnly: true,
     },
+    apiRoutes: {
+      callback: '/api/callback',
+      login: '/api/login',
+      register: '/api/register',
+      health: '/api/health',
+      logout: '/api/logout',
+    },
     middleware: true,
     authDomain: '',
     clientId: '',
@@ -72,16 +79,13 @@ export default defineNuxtModule<ModuleOptions>({
       redirectURL: options.redirectURL,
       logoutRedirectURL: options.logoutRedirectURL,
       postLoginRedirectURL: options.postLoginRedirectURL,
-      // TODO: Fix typing for apiRoutes. Currently it shows up as any, but it should be string | undefined
-      apiRoutes: {
-        callback: options.apiRoutes?.callback,
-        login: options.apiRoutes?.login,
-        register: options.apiRoutes?.register,
-        health: options.apiRoutes?.health,
-        logout: options.apiRoutes?.logout,
-      },
       clientSecret: options.clientSecret,
       audience: options.audience,
+    })
+
+    addTemplate({
+      filename: 'kinde-routes.config.mjs',
+      getContents: () => `export default ${JSON.stringify(options.apiRoutes)}`,
     })
 
     // https://github.com/Atinux/nuxt-auth-utils/blob/main/src/module.ts#L71-L80
@@ -108,19 +112,19 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     addServerHandler({
-      route: options.apiRoutes?.callback || '/api/callback',
+      route: options.apiRoutes!.callback!,
       handler:
         options.handlers?.callback
         || resolver.resolve('./runtime/server/api/callback.get'),
     })
     addServerHandler({
-      route: options.apiRoutes?.login || '/api/login',
+      route: options.apiRoutes!.login!,
       handler:
         options.handlers?.login
         || resolver.resolve('./runtime/server/api/login.get'),
     })
     addServerHandler({
-      route: options.apiRoutes?.register || '/api/register',
+      route: options.apiRoutes!.register!,
       handler:
         options.handlers?.register
         || resolver.resolve('./runtime/server/api/register.get'),
@@ -128,7 +132,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     if (options.debug) {
       addServerHandler({
-        route: options.apiRoutes?.health || '/api/health',
+        route: options.apiRoutes!.health!,
         handler:
           options.handlers?.health
           || resolver.resolve('./runtime/server/api/health.get'),
@@ -136,7 +140,7 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     addServerHandler({
-      route: options.apiRoutes?.logout || '/api/logout',
+      route: options.apiRoutes!.logout!,
       handler:
         options.handlers?.logout
         || resolver.resolve('./runtime/server/api/logout.get'),
