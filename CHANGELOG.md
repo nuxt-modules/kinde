@@ -1,6 +1,43 @@
 # Changelog
 
 
+## v0.1.11
+
+[compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.10...v0.1.11)
+
+### 🚀 Enhancements
+
+- Add postLoginRedirectURL support ([d1e8dd5](https://github.com/nuxt-modules/kinde/commit/d1e8dd5))
+- Add postLoginRedirectURL support" ([db5fe69](https://github.com/nuxt-modules/kinde/commit/db5fe69))
+- Add `postLoginRedirectURL` support ([#137](https://github.com/nuxt-modules/kinde/pull/137))
+- Allow configuring internal api routes ([#133](https://github.com/nuxt-modules/kinde/pull/133))
+
+### 🩹 Fixes
+
+- Include `id_token` in keys persisted in cookie ([#130](https://github.com/nuxt-modules/kinde/pull/130))
+- Add explicit types for `useKindeClient` ([#132](https://github.com/nuxt-modules/kinde/pull/132))
+
+### 🏡 Chore
+
+- **release:** V0.1.10 ([c8369bf](https://github.com/nuxt-modules/kinde/commit/c8369bf))
+- Update to latest `@nuxt/module-builder` ([#90](https://github.com/nuxt-modules/kinde/pull/90))
+- Run npm fix on `package.json` ([#93](https://github.com/nuxt-modules/kinde/pull/93))
+- Add CODEOWNERS file ([#98](https://github.com/nuxt-modules/kinde/pull/98))
+- Add FUNDING.yml ([6b9abcf](https://github.com/nuxt-modules/kinde/commit/6b9abcf))
+- Set package manager ([7a1fdce](https://github.com/nuxt-modules/kinde/commit/7a1fdce))
+- Bump dependencies ([6987ccd](https://github.com/nuxt-modules/kinde/commit/6987ccd))
+- Update nuxt ([37485dc](https://github.com/nuxt-modules/kinde/commit/37485dc))
+- Ignore type error until Nuxt v3.13 ([1cf4a9c](https://github.com/nuxt-modules/kinde/commit/1cf4a9c))
+- Bump mkdist in lockfile ([230b6e7](https://github.com/nuxt-modules/kinde/commit/230b6e7))
+- Lint ([7d61bd0](https://github.com/nuxt-modules/kinde/commit/7d61bd0))
+- Add `compatibilityDate` field ([1dbc48d](https://github.com/nuxt-modules/kinde/commit/1dbc48d))
+
+### ❤️ Contributors
+
+- Felix-dolderer ([@felix-dolderer](http://github.com/felix-dolderer))
+- Daniel Rivers ([@DanielRivers](http://github.com/DanielRivers))
+- Daniel Roe ([@danielroe](http://github.com/danielroe))
+
 ## v0.1.10
 
 [compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.9...v0.1.10)
