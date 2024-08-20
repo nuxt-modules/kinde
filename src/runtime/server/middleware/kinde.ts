@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
 
 async function createSessionManager(event: H3Event): Promise<SessionManager> {
   // TODO: improve memory session in future
-  const keysInCookie = ['refresh_token', 'access_token', 'id_token', 'ac-state-key']
+  const keysInCookie = ['refresh_token', 'access_token', 'id_token', 'ac-state-key', 'post-login-redirect-url']
   const memorySession: Record<(typeof keysInCookie)[number], unknown> = {}
 
   const config = useRuntimeConfig(event)
