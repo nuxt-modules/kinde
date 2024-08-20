@@ -1,22 +1,39 @@
 import type { H3Event, SessionConfig } from 'h3'
-import type { ACClient, SessionManager } from '@kinde-oss/kinde-typescript-sdk'
+import type { SessionManager } from '@kinde-oss/kinde-typescript-sdk'
 import type { CookieSerializeOptions } from 'cookie-es'
 import { defineEventHandler } from 'h3'
 
 import { getKindeClient } from '../utils/client'
+import type { KindeContext } from '../../types'
 import { getSession, updateSession, clearSession, useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(async (event) => {
   const sessionManager = await createSessionManager(event)
-  const kindeContext = { sessionManager } as Record<string, unknown>
   const kindeClient = getKindeClient()
-  for (const _key in kindeClient) {
-    const key = _key as keyof typeof kindeClient
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    kindeContext[key] = (kindeClient[key] as any).bind(kindeClient, sessionManager)
+  const kindeContext: KindeContext = {
+    sessionManager,
+    createOrg: kindeClient.createOrg.bind(kindeClient, sessionManager),
+    getBooleanFlag: kindeClient.getBooleanFlag.bind(kindeClient, sessionManager),
+    getClaim: kindeClient.getClaim.bind(kindeClient, sessionManager),
+    getClaimValue: kindeClient.getClaimValue.bind(kindeClient, sessionManager),
+    getFlag: kindeClient.getFlag.bind(kindeClient, sessionManager),
+    getIntegerFlag: kindeClient.getIntegerFlag.bind(kindeClient, sessionManager),
+    getOrganization: kindeClient.getOrganization.bind(kindeClient, sessionManager),
+    getPermission: kindeClient.getPermission.bind(kindeClient, sessionManager),
+    getPermissions: kindeClient.getPermissions.bind(kindeClient, sessionManager),
+    getStringFlag: kindeClient.getStringFlag.bind(kindeClient, sessionManager),
+    getToken: kindeClient.getToken.bind(kindeClient, sessionManager),
+    getUser: kindeClient.getUser.bind(kindeClient, sessionManager),
+    getUserOrganizations: kindeClient.getUserOrganizations.bind(kindeClient, sessionManager),
+    getUserProfile: kindeClient.getUserProfile.bind(kindeClient, sessionManager),
+    handleRedirectToApp: kindeClient.handleRedirectToApp.bind(kindeClient, sessionManager),
+    isAuthenticated: kindeClient.isAuthenticated.bind(kindeClient, sessionManager),
+    login: kindeClient.login.bind(kindeClient, sessionManager),
+    logout: kindeClient.logout.bind(kindeClient, sessionManager),
+    refreshTokens: kindeClient.refreshTokens.bind(kindeClient, sessionManager),
+    register: kindeClient.register.bind(kindeClient, sessionManager),
   }
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  event.context.kinde = kindeContext as any
+  event.context.kinde = kindeContext
 })
 
 async function createSessionManager(event: H3Event): Promise<SessionManager> {
@@ -67,14 +84,8 @@ async function createSessionManager(event: H3Event): Promise<SessionManager> {
   }
 }
 
-type Slice<T extends Array<unknown>> = T extends [infer _A, ...infer B] ? B : never
-
 declare module 'h3' {
   interface H3EventContext {
-    kinde: {
-      [key in keyof ACClient]: (
-        ...args: Slice<Parameters<ACClient[key]>>
-      ) => ReturnType<ACClient[key]>
-    } & { sessionManager: SessionManager }
+    kinde: KindeContext
   }
 }
