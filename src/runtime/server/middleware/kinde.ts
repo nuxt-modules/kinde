@@ -1,9 +1,10 @@
 import type { H3Event, SessionConfig } from 'h3'
-import type { ACClient, SessionManager } from '@kinde-oss/kinde-typescript-sdk'
+import type { SessionManager } from '@kinde-oss/kinde-typescript-sdk'
 import type { CookieSerializeOptions } from 'cookie-es'
 import { defineEventHandler } from 'h3'
 
 import { getKindeClient } from '../utils/client'
+import type { KindeContext } from '../../types'
 import { getSession, updateSession, clearSession, useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(async (event) => {
@@ -82,14 +83,6 @@ async function createSessionManager(event: H3Event): Promise<SessionManager> {
     },
   }
 }
-
-type Slice<T extends Array<unknown>> = T extends [infer _A, ...infer B] ? B : never
-
-export type KindeContext = {
-  [key in keyof ACClient]: (
-    ...args: Slice<Parameters<ACClient[key]>>
-  ) => ReturnType<ACClient[key]>
-} & { sessionManager: SessionManager }
 
 declare module 'h3' {
   interface H3EventContext {

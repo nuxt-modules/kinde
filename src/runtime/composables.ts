@@ -1,5 +1,4 @@
-import type { KindeContext } from './server/middleware/kinde'
-import type { AuthState } from './types'
+import type { AuthState, KindeContext } from './types'
 import { useNuxtApp, useRequestEvent } from '#imports'
 
 export const useAuth = () => {
