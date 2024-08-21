@@ -14,11 +14,12 @@ export interface ModuleOptions {
   cookie: Partial<CookieSerializeOptions>
   middleware?: boolean
   endpoints?: {
-    callback?: string
-    login?: string
-    logout?: string
-    register?: string
-    health?: string
+    callback: string
+    login: string
+    logout: string
+    register: string
+    health: string
+    access: string
   }
   handlers?: {
     callback?: string
@@ -59,6 +60,7 @@ export default defineNuxtModule<ModuleOptions>({
       register: '/api/register',
       health: '/api/health',
       logout: '/api/logout',
+      access: '/api/access',
     },
     middleware: true,
     authDomain: '',
