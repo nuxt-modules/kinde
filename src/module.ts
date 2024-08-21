@@ -147,12 +147,14 @@ export default defineNuxtModule<ModuleOptions>({
         || resolver.resolve('./runtime/server/api/logout.get'),
     })
 
-    addServerHandler({
-      route: '/api/access',
-      handler:
-        options.handlers?.access
-        || resolver.resolve('./runtime/server/api/access.post'),
-    })
+    if (nuxt.options.routeRules && Object.keys(nuxt.options.routeRules).find(key => !!nuxt.options.routeRules![key].kinde)) {
+      addServerHandler({
+        route: options.endpoints!.access!,
+        handler:
+          options.handlers?.access
+          || resolver.resolve('./runtime/server/api/access.post'),
+      })
+    }
 
     // Composables
     addImports({ name: 'useAuth', as: 'useAuth', from: resolver.resolve('./runtime/composables') })
