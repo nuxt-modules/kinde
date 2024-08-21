@@ -26,9 +26,9 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   const nuxt = useNuxtApp()
   const kindeConfig: NitroRouteRules['kinde'] = (await getRouteRules(nuxt.ssrContext?.event.path ?? '')).kinde
 
-  function denyAccess() {
-    if (kindeConfig?.redirectUrl) {
-      return navigateTo(kindeConfig.redirectUrl)
+  function denyAccess(redirectURL?: string) {
+    if (redirectURL) {
+      return navigateTo(redirectURL)
     }
     return rejectNavigation(401, 'You must be logged in to access this page')
   }
@@ -38,21 +38,21 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
       path: to.path,
     }) })
     if (!fetchResult.access && fetchResult.redirectUrl) {
-      window.location.href = fetchResult.redirectUrl
+      return denyAccess(fetchResult.redirectUrl)
     }
     return
   }
 
   // @ts-expect-error will be fixed in Nuxt v3.13
   if (!nuxt.$auth.loggedIn) {
-    return denyAccess()
+    return denyAccess(kindeConfig?.redirectUrl)
   }
 
   if (kindeConfig?.permissions) {
     const usersPermissions = await nuxt.ssrContext!.event.context.kinde.getPermissions()
 
     if (!kindeConfig.permissions.some(item => usersPermissions.permissions.includes(item))) {
-      return denyAccess()
+      return denyAccess(kindeConfig?.redirectUrl)
     }
   }
 })
