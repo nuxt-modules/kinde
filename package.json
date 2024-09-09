@@ -46,7 +46,7 @@
     "@types/node": "22.4.1",
     "@vue/test-utils": "2.4.6",
     "changelogen": "0.5.5",
-    "eslint": "9.9.1",
+    "eslint": "9.10.0",
     "happy-dom": "15.0.0",
     "nuxt": "3.13.0",
     "typescript": "5.5.4",
