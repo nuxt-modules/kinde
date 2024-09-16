@@ -8,10 +8,10 @@
     "generate": "nuxi generate"
   },
   "devDependencies": {
-    "@nuxt/devtools": "1.4.1",
+    "@nuxt/devtools": "1.4.2",
     "@nuxtjs/kinde": "latest",
     "nuxt": "3.13.0",
     "vue": "3.4.38",
-    "vue-router": "4.4.3"
+    "vue-router": "4.4.5"
   }
 }
