@@ -43,7 +43,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     return
   }
 
-  // @ts-expect-error will be fixed in Nuxt v3.13
   if (!nuxt.$auth.loggedIn) {
     return denyAccess(kindeConfig?.redirectUrl)
   }
