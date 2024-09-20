@@ -38,14 +38,14 @@
     "pathe": "^1.1.2"
   },
   "devDependencies": {
-    "@nuxt/devtools": "1.4.2",
+    "@nuxt/devtools": "1.5.0",
     "@nuxt/eslint-config": "0.5.7",
     "@nuxt/module-builder": "0.8.3",
     "@nuxt/schema": "3.13.0",
     "@nuxt/test-utils": "3.14.1",
     "@types/node": "22.5.5",
     "@vue/test-utils": "2.4.6",
-    "changelogen": "0.5.5",
+    "changelogen": "0.5.7",
     "eslint": "9.10.0",
     "happy-dom": "15.0.0",
     "nuxt": "3.13.0",
@@ -57,5 +57,5 @@
     "@nuxt/schema": "3.13.0",
     "@nuxtjs/kinde": "link:."
   },
-  "packageManager": "pnpm@9.10.0"
+  "packageManager": "pnpm@9.11.0"
 }
