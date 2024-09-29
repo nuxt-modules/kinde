@@ -178,6 +178,5 @@ export default defineNuxtModule<ModuleOptions>({
 declare module 'h3' {
   interface H3EventContext {
     kinde: KindeContext
-    test: string
   }
 }
