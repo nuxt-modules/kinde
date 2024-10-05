@@ -38,7 +38,7 @@
     "pathe": "^1.1.2"
   },
   "devDependencies": {
-    "@nuxt/devtools": "1.5.1",
+    "@nuxt/devtools": "1.5.2",
     "@nuxt/eslint-config": "0.5.7",
     "@nuxt/module-builder": "0.8.3",
     "@nuxt/schema": "3.13.0",
@@ -57,5 +57,5 @@
     "@nuxt/schema": "3.13.0",
     "@nuxtjs/kinde": "link:."
   },
-  "packageManager": "pnpm@9.11.0"
+  "packageManager": "pnpm@9.12.0"
 }
