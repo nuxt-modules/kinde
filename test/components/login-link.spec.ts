@@ -21,6 +21,7 @@ describe('LoginLink', () => {
         org_code: '123',
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?org_code=123"`)
   })
 
@@ -33,6 +34,7 @@ describe('LoginLink', () => {
         org_name: 'NAME123',
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?org_name=NAME123"`)
   })
 
@@ -45,6 +47,7 @@ describe('LoginLink', () => {
         state: 'ASDBED',
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?state=ASDBED"`)
   })
 
@@ -57,6 +60,7 @@ describe('LoginLink', () => {
         post_login_redirect_url: 'http://example.com/redirect',
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?post_login_redirect_url=http:%2F%2Fexample.com%2Fredirect"`)
   })
 
@@ -71,6 +75,7 @@ describe('LoginLink', () => {
         },
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?login_hint=test@testdomain.com"`)
   })
 
@@ -85,6 +90,7 @@ describe('LoginLink', () => {
         },
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/login?connection_id=conn_1234"`)
   })
 
@@ -99,6 +105,7 @@ describe('LoginLink', () => {
         },
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href.includes('authUrlParams')).toBeFalsy()
   })
 

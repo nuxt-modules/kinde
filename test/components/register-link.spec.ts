@@ -21,6 +21,7 @@ describe('RegisterLink', () => {
         org_code: '123',
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?org_code=123&is_create_org=false"`)
   })
 
@@ -33,6 +34,7 @@ describe('RegisterLink', () => {
         org_name: 'NAME123',
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?org_name=NAME123&is_create_org=false"`)
   })
 
@@ -45,6 +47,7 @@ describe('RegisterLink', () => {
         state: 'ASDBED',
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?state=ASDBED&is_create_org=false"`)
   })
 
@@ -57,6 +60,7 @@ describe('RegisterLink', () => {
         post_login_redirect_url: 'http://example.com/redirect',
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?post_login_redirect_url=http:%2F%2Fexample.com%2Fredirect&is_create_org=false"`)
   })
 
@@ -71,6 +75,7 @@ describe('RegisterLink', () => {
         },
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?login_hint=test@testdomain.com&is_create_org=false"`)
   })
 
@@ -83,6 +88,7 @@ describe('RegisterLink', () => {
         is_create_org: true,
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?is_create_org=true"`)
   })
 
@@ -92,10 +98,11 @@ describe('RegisterLink', () => {
         default: () => 'Hello',
       },
       props: {
-        start_page: 'register',
+        start_page: 'registration',
       },
     })
-    expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?start_page=register&is_create_org=false"`)
+    // @ts-expect-error href is not exposed in the types
+    expect(wrapper.vm.href).toMatchInlineSnapshot(`"/api/register?start_page=registration&is_create_org=false"`)
   })
 
   test('do not authUrlParams added to URL', async () => {
@@ -109,6 +116,7 @@ describe('RegisterLink', () => {
         },
       },
     })
+    // @ts-expect-error href is not exposed in the types
     expect(wrapper.vm.href.includes('authUrlParams')).toBeFalsy()
   })
 
