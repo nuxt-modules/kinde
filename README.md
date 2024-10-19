@@ -132,7 +132,7 @@ npm run release
 [npm-version-src]: https://img.shields.io/npm/v/@nuxtjs/kinde/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-version-href]: https://npmjs.com/package/@nuxtjs/kinde
 [npm-downloads-src]: https://img.shields.io/npm/dm/@nuxtjs/kinde.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-downloads-href]: https://npmjs.com/package/@nuxtjs/kinde
+[npm-downloads-href]: https://npm.chart.dev/@nuxtjs/kinde
 [license-src]: https://img.shields.io/npm/l/@nuxtjs/kinde.svg?style=flat&colorA=18181B&colorB=28CF8D
 [license-href]: https://npmjs.com/package/@nuxtjs/kinde
 [nuxt-src]: https://img.shields.io/badge/Nuxt-18181B?logo=nuxt.js
