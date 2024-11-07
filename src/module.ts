@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import { readFile, writeFile } from 'node:fs/promises'
 
-import { addServerHandler, defineNuxtModule, addPlugin, createResolver, addRouteMiddleware, addImports, addComponent, addTemplate } from '@nuxt/kit'
+import { addServerHandler, defineNuxtModule, addPlugin, createResolver, addRouteMiddleware, addImports, addComponent, addTemplate, addTypeTemplate } from '@nuxt/kit'
 import { defu } from 'defu'
 import type { CookieSerializeOptions } from 'cookie-es'
 import { join } from 'pathe'
@@ -14,11 +14,12 @@ export interface ModuleOptions {
   cookie: Partial<CookieSerializeOptions>
   middleware?: boolean
   endpoints?: {
-    callback?: string
-    login?: string
-    logout?: string
-    register?: string
-    health?: string
+    callback: string
+    login: string
+    logout: string
+    register: string
+    health: string
+    access: string
   }
   handlers?: {
     callback?: string
@@ -26,6 +27,7 @@ export interface ModuleOptions {
     logout?: string
     register?: string
     health?: string
+    access?: string
   }
   authDomain?: string
   clientId?: string
@@ -58,6 +60,7 @@ export default defineNuxtModule<ModuleOptions>({
       register: '/api/register',
       health: '/api/health',
       logout: '/api/logout',
+      access: '/api/access',
     },
     middleware: true,
     authDomain: '',
@@ -146,6 +149,15 @@ export default defineNuxtModule<ModuleOptions>({
         || resolver.resolve('./runtime/server/api/logout.get'),
     })
 
+    if (nuxt.options.routeRules && Object.keys(nuxt.options.routeRules).find(key => !!nuxt.options.routeRules![key].kinde)) {
+      addServerHandler({
+        route: options.endpoints!.access!,
+        handler:
+          options.handlers?.access
+          || resolver.resolve('./runtime/server/api/access.post'),
+      })
+    }
+
     // Composables
     addImports({ name: 'useAuth', as: 'useAuth', from: resolver.resolve('./runtime/composables') })
     addImports({ name: 'useKindeClient', as: 'useKindeClient', from: resolver.resolve('./runtime/composables') })
@@ -170,6 +182,28 @@ export default defineNuxtModule<ModuleOptions>({
     addComponent({
       name: 'RegisterLink',
       filePath: resolver.resolve('./runtime/components/RegisterLink'),
+    })
+
+    addTypeTemplate({
+      filename: `types/nuxt-kinde.d.ts`,
+      getContents: () => {
+        return `
+interface KindeRouteRules {
+  permissions: string[]
+  redirectUrl: string
+}
+
+declare module 'nitropack' {
+  interface NitroRouteRules {
+    kinde?: KindeRouteRules
+  }
+  interface NitroRouteConfig {
+    kinde?: KindeRouteRules
+  }
+}
+export {}
+`
+      },
     })
   },
 })
