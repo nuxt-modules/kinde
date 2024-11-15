@@ -11,7 +11,7 @@
     "@nuxt/devtools": "1.6.0",
     "@nuxtjs/kinde": "latest",
     "nuxt": "3.14.159",
-    "vue": "3.5.12",
+    "vue": "3.5.13",
     "vue-router": "4.4.5"
   }
 }
