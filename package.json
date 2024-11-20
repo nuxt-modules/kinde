@@ -41,20 +41,20 @@
     "@nuxt/devtools": "1.6.0",
     "@nuxt/eslint-config": "0.7.1",
     "@nuxt/module-builder": "0.8.4",
-    "@nuxt/schema": "3.14.159",
+    "@nuxt/schema": "3.14.1592",
     "@nuxt/test-utils": "3.14.4",
     "@types/node": "22.9.1",
     "@vue/test-utils": "2.4.6",
     "changelogen": "0.5.7",
     "eslint": "9.15.0",
     "happy-dom": "15.11.6",
-    "nuxt": "3.14.159",
+    "nuxt": "3.14.1592",
     "typescript": "5.6.3",
     "vitest": "2.1.5",
     "vue-tsc": "2.1.10"
   },
   "resolutions": {
-    "@nuxt/schema": "3.14.159",
+    "@nuxt/schema": "3.14.1592",
     "@nuxtjs/kinde": "link:."
   },
   "packageManager": "pnpm@9.14.1"
