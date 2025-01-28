@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
-  compatibilityDate: '2024-08-19',
   modules: ['@nuxtjs/kinde'],
   devtools: { enabled: true },
+  compatibilityDate: '2024-08-19',
   routeRules: {
     '/protected': {
       appMiddleware: ['auth-logged-in'],
