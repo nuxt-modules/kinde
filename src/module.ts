@@ -150,7 +150,7 @@ export default defineNuxtModule<ModuleOptions>({
         || resolver.resolve('./runtime/server/api/logout.get'),
     })
 
-    if (nuxt.options.routeRules && Object.keys(nuxt.options.routeRules).find(key => !!nuxt.options.routeRules![key].kinde)) {
+    if (nuxt.options.routeRules && Object.entries(nuxt.options.routeRules).some(([_, value]) => value.kinde)) {
       addServerHandler({
         route: options.endpoints!.access!,
         handler:
