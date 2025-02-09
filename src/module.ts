@@ -15,12 +15,12 @@ export interface ModuleOptions {
   cookie: Partial<CookieSerializeOptions>
   middleware?: boolean
   endpoints?: {
-    callback: string
-    login: string
-    logout: string
-    register: string
-    health: string
-    access: string
+    callback?: string
+    login?: string
+    logout?: string
+    register?: string
+    health?: string
+    access?: string
   }
   handlers?: {
     callback?: string
