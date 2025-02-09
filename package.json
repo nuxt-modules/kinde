@@ -43,20 +43,20 @@
     "pathe": "^2.0.0"
   },
   "devDependencies": {
-    "@nuxt/devtools": "1.6.4",
+    "@nuxt/devtools": "1.7.0",
     "@nuxt/eslint-config": "1.0.1",
     "@nuxt/module-builder": "1.0.0-alpha.1",
     "@nuxt/schema": "3.15.4",
     "@nuxt/test-utils": "3.15.4",
-    "@types/node": "22.10.2",
+    "@types/node": "22.13.1",
     "@vue/test-utils": "2.4.6",
     "changelogen": "0.5.7",
     "eslint": "9.19.0",
     "happy-dom": "16.8.1",
     "nuxt": "3.15.4",
-    "typescript": "5.6.3",
+    "typescript": "5.7.3",
     "vitest": "3.0.5",
-    "vue-tsc": "2.1.10"
+    "vue-tsc": "2.2.0"
   },
   "resolutions": {
     "@nuxt/schema": "3.15.4",
