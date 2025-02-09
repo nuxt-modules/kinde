@@ -1,13 +1,6 @@
 import type { NitroRouteRules } from 'nitropack'
 import type { AccessResponse } from '../types'
-import {
-  abortNavigation,
-  createError,
-  defineNuxtRouteMiddleware,
-  navigateTo,
-  useNuxtApp,
-  getRouteRules,
-} from '#imports'
+import { abortNavigation, createError, defineNuxtRouteMiddleware, navigateTo, useNuxtApp, getRouteRules, useRoute } from '#imports'
 
 function rejectNavigation(statusCode: number, message: string) {
   if (import.meta.server) {
@@ -24,7 +17,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     return
   }
   const nuxt = useNuxtApp()
-  const kindeConfig: NitroRouteRules['kinde'] = (await getRouteRules(nuxt.ssrContext?.event.path ?? '')).kinde
+  const { kinde: kindeConfig } = await getRouteRules({ path: useRoute().path }) as NitroRouteRules
 
   function denyAccess(redirectURL?: string) {
     if (redirectURL) {
@@ -34,9 +27,12 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
   }
 
   if (import.meta.client) {
-    const fetchResult = await $fetch<AccessResponse>('/api/access', { method: 'POST', body: JSON.stringify({
-      path: to.path,
-    }) })
+    const fetchResult = await $fetch<AccessResponse>('/api/access', {
+      method: 'POST',
+      body: {
+        path: to.path,
+      },
+    })
     if (!fetchResult.access && fetchResult.redirectUrl) {
       return denyAccess(fetchResult.redirectUrl)
     }
