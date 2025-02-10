@@ -43,7 +43,7 @@
     "pathe": "^2.0.0"
   },
   "devDependencies": {
-    "@nuxt/devtools": "1.7.0",
+    "@nuxt/devtools": "2.0.0",
     "@nuxt/eslint-config": "1.0.1",
     "@nuxt/module-builder": "1.0.0-alpha.1",
     "@nuxt/schema": "3.15.4",
