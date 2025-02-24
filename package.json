@@ -52,10 +52,10 @@
     "@vue/test-utils": "2.4.6",
     "changelogen": "0.5.7",
     "eslint": "9.20.1",
-    "happy-dom": "17.1.0",
+    "happy-dom": "17.1.4",
     "nuxt": "3.15.4",
     "typescript": "5.7.3",
-    "vitest": "3.0.5",
+    "vitest": "3.0.7",
     "vue-tsc": "2.2.4"
   },
   "resolutions": {
