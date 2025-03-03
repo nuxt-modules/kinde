@@ -2,17 +2,28 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/kinde'],
   devtools: { enabled: true },
   routeRules: {
-    '/protected': {
+    '/**': {
       appMiddleware: ['auth-logged-in'],
       kinde: {
-        permissions: ['example_permission'],
-        redirectUrl: '/',
+        redirectUrl: '/api/login',
+        external: true,
       },
     },
     '/dashboard': {
       appMiddleware: ['auth-logged-in'],
       kinde: {
-        redirectUrl: '/',
+        // list of permissions that are required to access the route
+        permissions: {
+          admin: true,
+        },
+        redirectUrl: '/api/login',
+        external: true,
+      },
+    },
+    '/public': {
+      appMiddleware: ['auth-logged-in'],
+      kinde: {
+        public: true,
       },
     },
   },

@@ -7,6 +7,7 @@ export type AuthState =
 export type AccessResponse = {
   access: boolean
   redirectUrl?: string
+  external?: boolean
 }
 
 type Slice<T extends Array<unknown>> = T extends [infer _A, ...infer B] ? B : never

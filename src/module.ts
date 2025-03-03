@@ -189,10 +189,12 @@ export default defineNuxtModule<ModuleOptions>({
       filename: `types/nuxt-kinde.d.ts`,
       getContents: () => {
         return `
-interface KindeRouteRules {
-  permissions: string[]
-  redirectUrl: string
-}
+type KindeRouteRules {
+  permissions?: Record<string, boolean>,
+  redirectUrl?: string,
+  external?: boolean,
+  public?: never
+} | { public: boolean; permissions?: never; redirectUrl?: never; external?: never }
 
 declare module 'nitropack' {
   interface NitroRouteRules {

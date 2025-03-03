@@ -1,37 +1,53 @@
 import { defineEventHandler, readBody } from 'h3'
+import { getRouteRulesForPath } from 'nitropack/runtime/internal/route-rules'
+
 import type { NitroRouteRules } from 'nitropack'
 import type { AccessResponse } from '../../types'
-import { useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(async (event): Promise<AccessResponse> => {
-  const { kinde: kindeSettings, ...rest } = useRuntimeConfig()
-  const body = await readBody(event)
+  const { path } = await readBody(event)
+  const routeRules = await getRouteRulesForPath(path).kinde as NitroRouteRules['kinde']
 
-  const routeRules: NitroRouteRules['kinde'] = rest.nitro?.routeRules?.[body.path]?.kinde
-
-  if (!routeRules) {
+  // No rules defined or route is public - allow access
+  if (!routeRules || routeRules.public) {
     return {
       access: true,
     }
   }
-
-  const usersPermissions = await event.context.kinde.getPermissions()
   const isAuthenticaded = await event.context.kinde.isAuthenticated()
 
-  if (!isAuthenticaded || (routeRules.permissions && !usersPermissions.permissions)) {
+  // Non public rules are defined, but not logged in, reject access
+  if (!isAuthenticaded) {
     return {
       access: false,
       redirectUrl: routeRules.redirectUrl,
+      external: routeRules.external,
     }
   }
 
-  if (!routeRules.permissions?.some((item: string) => usersPermissions.permissions.includes(item))) {
+  const usersPermissions = await event.context.kinde.getPermissions()
+
+  // Logged in user does not have any permissions and rules are defined on route
+  if (routeRules.permissions && !usersPermissions.permissions) {
     return {
       access: false,
       redirectUrl: routeRules.redirectUrl,
+      external: routeRules.external,
     }
   }
 
+  // Logged in user does not have permission to access the route
+  if (routeRules.permissions) {
+    if (!Object.keys(routeRules.permissions)?.some((item: string) => usersPermissions.permissions.includes(item))) {
+      return {
+        access: false,
+        redirectUrl: routeRules.redirectUrl,
+        external: routeRules.external,
+      }
+    }
+  }
+
+  // allow acce
   return {
     access: true,
   }
