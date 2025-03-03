@@ -188,10 +188,10 @@ export default defineNuxtModule<ModuleOptions>({
     addTypeTemplate({
       filename: `types/nuxt-kinde.d.ts`,
       getContents: () => {
-        return `
-type KindeRouteRules {
-  permissions?: Record<string, boolean>,
-  redirectUrl?: string,
+        return ` 
+type KindeRouteRules = {
+  permissions: Record<string, boolean>,
+  redirectUrl: string,
   external?: boolean,
   public?: never
 } | { public: boolean; permissions?: never; redirectUrl?: never; external?: never }
