@@ -2,7 +2,7 @@
   <header>
     <nav class="nav container">
       <h1 class="text-display-3">
-        Kinde x Nuxt
+        <NuxtLink to="/">Kinde x Nuxt</NuxtLink>
       </h1>
       <div v-if="auth.loggedIn">
         <div class="profile-blob">
@@ -33,6 +33,8 @@
               Log out
             </NuxtLink>
           </div>
+          <NuxtLink to="dashboard">Dashboard</NuxtLink>
+          <NuxtLink to="protected">Protected</NuxtLink>
         </div>
       </div>
       <div v-else>
