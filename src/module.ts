@@ -7,7 +7,6 @@ import type { CookieSerializeOptions } from 'cookie-es'
 import { join } from 'pathe'
 
 import { version } from '../package.json'
-import type { KindeContext } from './runtime/types'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -185,10 +184,14 @@ export default defineNuxtModule<ModuleOptions>({
       filePath: resolver.resolve('./runtime/components/RegisterLink'),
     })
 
+    const typePath = resolver.resolve('./runtime/types')
+
     addTypeTemplate({
       filename: `types/nuxt-kinde.d.ts`,
       getContents: () => {
         return ` 
+import type { KindeContext } from ${JSON.stringify(typePath)}
+
 type KindeRouteRules = {
   permissions: Record<string, boolean>,
   redirectUrl: string,
