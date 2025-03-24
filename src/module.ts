@@ -196,6 +196,12 @@ type KindeRouteRules = {
   public?: never
 } | { public: boolean; permissions?: never; redirectUrl?: never; external?: never }
 
+declare module 'h3' {
+  interface H3EventContext {
+    kinde: KindeContext
+  }
+}
+
 declare module 'nitropack' {
   interface NitroRouteRules {
     kinde?: KindeRouteRules
@@ -207,12 +213,6 @@ declare module 'nitropack' {
 export {}
 `
       },
-    })
+    }, { nitro: true, nuxt: true })
   },
 })
-
-declare module 'h3' {
-  interface H3EventContext {
-    kinde: KindeContext
-  }
-}
