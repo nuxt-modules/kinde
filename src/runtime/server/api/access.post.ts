@@ -14,10 +14,10 @@ export default defineEventHandler(async (event): Promise<AccessResponse> => {
       access: true,
     }
   }
-  const isAuthenticaded = await event.context.kinde.isAuthenticated()
+  const isAuthenticated = await event.context.kinde.isAuthenticated()
 
   // Non public rules are defined, but not logged in, reject access
-  if (!isAuthenticaded) {
+  if (!isAuthenticated) {
     return {
       access: false,
       redirectUrl: routeRules.redirectUrl,
