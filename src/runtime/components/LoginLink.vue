@@ -12,6 +12,7 @@ import type { LoginURLOptions } from '@kinde-oss/kinde-typescript-sdk'
 import { computed } from 'vue'
 import { withQuery } from 'ufo'
 import endpoints from '#build/kinde-routes.config.mjs'
+import { NuxtLink } from '#components'
 
 const props = defineProps<LoginURLOptions>()
 const href = computed(() => {
