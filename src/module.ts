@@ -1,13 +1,12 @@
 import { randomUUID } from 'node:crypto'
 import { readFile, writeFile } from 'node:fs/promises'
 
-import { addServerHandler, defineNuxtModule, addPlugin, createResolver, addRouteMiddleware, addImports, addComponent, addTemplate } from '@nuxt/kit'
+import { addServerHandler, defineNuxtModule, addPlugin, createResolver, addRouteMiddleware, addImports, addComponent, addTemplate, addTypeTemplate } from '@nuxt/kit'
 import { defu } from 'defu'
 import type { CookieSerializeOptions } from 'cookie-es'
 import { join } from 'pathe'
 
 import { version } from '../package.json'
-import type { KindeContext } from './runtime/types'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
@@ -20,6 +19,7 @@ export interface ModuleOptions {
     logout?: string
     register?: string
     health?: string
+    access?: string
   }
   handlers?: {
     callback?: string
@@ -27,6 +27,7 @@ export interface ModuleOptions {
     logout?: string
     register?: string
     health?: string
+    access?: string
   }
   authDomain?: string
   clientId?: string
@@ -59,6 +60,7 @@ export default defineNuxtModule<ModuleOptions>({
       register: '/api/register',
       health: '/api/health',
       logout: '/api/logout',
+      access: '/api/access',
     },
     middleware: true,
     authDomain: '',
@@ -147,6 +149,15 @@ export default defineNuxtModule<ModuleOptions>({
         || resolver.resolve('./runtime/server/api/logout.get'),
     })
 
+    if (nuxt.options.routeRules && Object.entries(nuxt.options.routeRules).some(([_, value]) => value.kinde)) {
+      addServerHandler({
+        route: options.endpoints!.access!,
+        handler:
+          options.handlers?.access
+          || resolver.resolve('./runtime/server/api/access.post'),
+      })
+    }
+
     // Composables
     addImports({ name: 'useAuth', as: 'useAuth', from: resolver.resolve('./runtime/composables') })
     addImports({ name: 'useKindeClient', as: 'useKindeClient', from: resolver.resolve('./runtime/composables') })
@@ -172,11 +183,39 @@ export default defineNuxtModule<ModuleOptions>({
       name: 'RegisterLink',
       filePath: resolver.resolve('./runtime/components/RegisterLink'),
     })
-  },
-})
+
+    const typePath = resolver.resolve('./runtime/types')
+
+    addTypeTemplate({
+      filename: `types/nuxt-kinde.d.ts`,
+      getContents: () => {
+        return ` 
+import type { KindeContext } from ${JSON.stringify(typePath)}
+
+type KindeRouteRules = {
+  permissions: Record<string, boolean>,
+  redirectUrl: string,
+  external?: boolean,
+  public?: never
+} | { public: boolean; permissions?: never; redirectUrl?: never; external?: never }
 
 declare module 'h3' {
   interface H3EventContext {
     kinde: KindeContext
   }
 }
+
+declare module 'nitropack' {
+  interface NitroRouteRules {
+    kinde?: KindeRouteRules
+  }
+  interface NitroRouteConfig {
+    kinde?: KindeRouteRules
+  }
+}
+export {}
+`
+      },
+    }, { nitro: true, nuxt: true })
+  },
+})
