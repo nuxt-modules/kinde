@@ -1,6 +1,53 @@
 # Changelog
 
 
+## v0.2.0
+
+[compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.11...v0.2.0)
+
+### 🚀 Enhancements
+
+- Protected routes defined from nuxt config ([#47](https://github.com/nuxt-modules/kinde/pull/47))
+
+### 🩹 Fixes
+
+- Directly import `NuxtLink` in components ([365f570](https://github.com/nuxt-modules/kinde/commit/365f570))
+
+### 💅 Refactors
+
+- Move `KindeContext` event declaration ([#151](https://github.com/nuxt-modules/kinde/pull/151))
+
+### 📖 Documentation
+
+- Update link to downloads count badge ([374827a](https://github.com/nuxt-modules/kinde/commit/374827a))
+
+### 📦 Build
+
+- ⚠️  Upgrade to latest module-builder and drop cjs support ([27e1399](https://github.com/nuxt-modules/kinde/commit/27e1399))
+
+### 🏡 Chore
+
+- Update to latest `mkdist` ([#143](https://github.com/nuxt-modules/kinde/pull/143))
+- Move `useFlatConfig` out of `experimental` ([27aa8f4](https://github.com/nuxt-modules/kinde/commit/27aa8f4))
+
+### 🤖 CI
+
+- Run checks against renovate branches ([d7f0af7](https://github.com/nuxt-modules/kinde/commit/d7f0af7))
+- Run checks against renovate branches ([93a0fca](https://github.com/nuxt-modules/kinde/commit/93a0fca))
+- Run test suite on windows ([#160](https://github.com/nuxt-modules/kinde/pull/160))
+- Force latest corepack ([0c1b6a4](https://github.com/nuxt-modules/kinde/commit/0c1b6a4))
+- Do not run double checks against renovate branches ([49fed00](https://github.com/nuxt-modules/kinde/commit/49fed00))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Upgrade to latest module-builder and drop cjs support ([27e1399](https://github.com/nuxt-modules/kinde/commit/27e1399))
+
+### ❤️ Contributors
+
+- Daniel Roe ([@danielroe](https://github.com/danielroe))
+- Daniel Rivers ([@DanielRivers](https://github.com/DanielRivers))
+- Mod08 <maege.daetwyler@hispeed.ch>
+
 ## v0.1.11
 
 [compare changes](https://github.com/nuxt-modules/kinde/compare/v0.1.10...v0.1.11)
