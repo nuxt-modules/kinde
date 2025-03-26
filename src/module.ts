@@ -70,7 +70,7 @@ export default defineNuxtModule<ModuleOptions>({
     logoutRedirectURL: '',
     postLoginRedirectURL: '',
     audience: '',
-    debug: nuxt.options.dev || nuxt.options.debug,
+    debug: nuxt.options.dev || !!nuxt.options.debug,
   }),
   async setup(options, nuxt) {
     nuxt.options.runtimeConfig.kinde = defu(nuxt.options.runtimeConfig.kinde, {
