@@ -8,7 +8,7 @@
     "generate": "nuxi generate"
   },
   "devDependencies": {
-    "@nuxt/devtools": "2.3.1",
+    "@nuxt/devtools": "2.3.2",
     "@nuxtjs/kinde": "latest",
     "nuxt": "3.16.1",
     "vue": "3.5.13",
