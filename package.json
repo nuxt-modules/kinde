@@ -52,7 +52,7 @@
     "@vue/test-utils": "2.4.6",
     "changelogen": "0.6.1",
     "eslint": "9.26.0",
-    "happy-dom": "17.4.6",
+    "happy-dom": "17.4.7",
     "nuxt": "3.17.2",
     "typescript": "5.8.3",
     "vitest": "3.1.3",
