@@ -24,23 +24,25 @@
             <p class="text-heading-2">
               {{ auth.user?.given_name }} {{ auth.user?.family_name }}
             </p>
-
-            <NuxtLink
-              class="text-subtle"
-              to="/api/logout"
-              external
-            >
-              Log out
-            </NuxtLink>
+            <div class="account-nav">
+              <PortalLink class="text-subtle">
+                Account
+              </PortalLink>
+              <NuxtLink
+                class="text-subtle"
+                to="/api/logout"
+                external
+              >
+                Log out
+              </NuxtLink>
+            </div>
           </div>
           <NuxtLink to="dashboard">Dashboard</NuxtLink>
           <NuxtLink to="protected">Protected</NuxtLink>
         </div>
       </div>
       <div v-else>
-        <LoginLink
-          class="btn btn-ghost sign-in-btn"
-        >
+        <LoginLink class="btn btn-ghost sign-in-btn">
           Sign in
         </LoginLink>
         <RegisterLink
@@ -74,6 +76,7 @@
 
 <script setup lang="ts">
 import '~/assets/css/globals.css'
+// import { PortalPage } from '@kinde-oss/kinde-typescript-sdk'
 
 const auth = useAuth()
 </script>

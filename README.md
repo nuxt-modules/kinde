@@ -42,6 +42,8 @@ export default defineNuxtConfig({
     //   register: '/api/register',
     //   health: '/api/health',
     //   logout: '/api/logout'
+    //   access: '/api/access'
+    //   portal: '/api/portal'
     // }
   }
 })
