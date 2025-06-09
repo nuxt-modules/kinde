@@ -194,16 +194,17 @@ export default defineNuxtModule<ModuleOptions>({
       filePath: resolver.resolve('./runtime/components/RegisterLink'),
     })
 
-    const typePath = resolver.resolve('./runtime/types')
     addComponent({
       name: 'PortalLink',
       filePath: resolver.resolve('./runtime/components/PortalLink'),
     })
 
+    const typePath = resolver.resolve('./runtime/types')
+
     addTypeTemplate({
       filename: `types/nuxt-kinde.d.ts`,
       getContents: () => {
-        return ` 
+        return `
 import type { KindeContext } from ${JSON.stringify(typePath)}
 
 type KindeRouteRules = {

@@ -76,7 +76,6 @@
 
 <script setup lang="ts">
 import '~/assets/css/globals.css'
-// import { PortalPage } from '@kinde-oss/kinde-typescript-sdk'
 
 const auth = useAuth()
 </script>
