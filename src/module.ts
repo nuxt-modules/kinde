@@ -20,6 +20,7 @@ export interface ModuleOptions {
     register?: string
     health?: string
     access?: string
+    portal?: string
   }
   handlers?: {
     callback?: string
@@ -28,6 +29,7 @@ export interface ModuleOptions {
     register?: string
     health?: string
     access?: string
+    portal?: string
   }
   authDomain?: string
   clientId?: string
@@ -61,6 +63,7 @@ export default defineNuxtModule<ModuleOptions>({
       health: '/api/health',
       logout: '/api/logout',
       access: '/api/access',
+      portal: '/api/portal',
     },
     middleware: true,
     authDomain: '',
@@ -149,6 +152,13 @@ export default defineNuxtModule<ModuleOptions>({
         || resolver.resolve('./runtime/server/api/logout.get'),
     })
 
+    addServerHandler({
+      route: options.endpoints!.portal!,
+      handler:
+        options.handlers?.portal
+        || resolver.resolve('./runtime/server/api/portal.get'),
+    })
+
     if (nuxt.options.routeRules && Object.entries(nuxt.options.routeRules).some(([_, value]) => value.kinde)) {
       addServerHandler({
         route: options.endpoints!.access!,
@@ -184,12 +194,17 @@ export default defineNuxtModule<ModuleOptions>({
       filePath: resolver.resolve('./runtime/components/RegisterLink'),
     })
 
+    addComponent({
+      name: 'PortalLink',
+      filePath: resolver.resolve('./runtime/components/PortalLink'),
+    })
+
     const typePath = resolver.resolve('./runtime/types')
 
     addTypeTemplate({
       filename: `types/nuxt-kinde.d.ts`,
       getContents: () => {
-        return ` 
+        return `
 import type { KindeContext } from ${JSON.stringify(typePath)}
 
 type KindeRouteRules = {
