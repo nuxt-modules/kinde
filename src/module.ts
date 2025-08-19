@@ -220,6 +220,14 @@ declare module 'h3' {
   }
 }
 
+declare module 'nitropack/types' {
+  interface NitroRouteRules {
+    kinde?: KindeRouteRules
+  }
+  interface NitroRouteConfig {
+    kinde?: KindeRouteRules
+  }
+}
 declare module 'nitropack' {
   interface NitroRouteRules {
     kinde?: KindeRouteRules
@@ -231,6 +239,6 @@ declare module 'nitropack' {
 export {}
 `
       },
-    }, { nitro: true, nuxt: true })
+    }, { nitro: true, nuxt: true, node: true })
   },
 })
