@@ -1,4 +1,5 @@
 import type { NitroRouteRules } from 'nitropack'
+import endpoints from '#build/kinde-routes.config.mjs'
 import type { AccessResponse } from '../types'
 import { abortNavigation, createError, defineNuxtRouteMiddleware, navigateTo, useNuxtApp, getRouteRules } from '#imports'
 
@@ -27,7 +28,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
   if (import.meta.client) {
     // on client don't have access to route rules, check server
-    const fetchResult = await $fetch<AccessResponse>('/api/access', {
+    const fetchResult = await $fetch<AccessResponse>(endpoints.access, {
       method: 'POST',
       body: {
         path: to.path,
