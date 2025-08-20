@@ -1,5 +1,6 @@
 import type { NitroRouteRules } from 'nitropack'
 import endpoints from '#build/kinde-routes.config.mjs'
+import { hasKindeRouteRules } from '#build/kinde-route-rules.mjs'
 import type { AccessResponse } from '../types'
 import { abortNavigation, createError, defineNuxtRouteMiddleware, navigateTo, useNuxtApp, getRouteRules } from '#imports'
 
@@ -26,6 +27,15 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     return rejectNavigation(401, 'You must be logged in to access this page')
   }
 
+  if (!hasKindeRouteRules) {
+    // not logged in, deny access
+    if (!nuxt.$auth.loggedIn) {
+      return denyAccess(endpoints.login, true)
+    }
+    // allow access
+    return
+  }
+
   if (import.meta.client) {
     // on client don't have access to route rules, check server
     const fetchResult = await $fetch<AccessResponse>(endpoints.access, {
@@ -42,14 +52,14 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
   const { kinde: kindeConfig } = await getRouteRules({ path: to.path }) as NitroRouteRules
 
+  // always deny access if not logged in
+  if (!nuxt.$auth.loggedIn) {
+    return denyAccess(kindeConfig?.redirectUrl || endpoints.login, kindeConfig?.external ?? true)
+  }
+
   // if no config or public route, allow access
   if (!kindeConfig || kindeConfig.public) {
     return
-  }
-
-  // not logged in, deny access
-  if (!nuxt.$auth.loggedIn) {
-    return denyAccess(kindeConfig?.redirectUrl, kindeConfig?.external)
   }
 
   // user is logged in, check permissions
