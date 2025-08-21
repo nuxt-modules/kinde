@@ -159,7 +159,8 @@ export default defineNuxtModule<ModuleOptions>({
         || resolver.resolve('./runtime/server/api/portal.get'),
     })
 
-    if (nuxt.options.routeRules && Object.entries(nuxt.options.routeRules).some(([_, value]) => value.kinde)) {
+    const hasKindeRouteRules = Object.entries(nuxt.options.routeRules || {}).some(([_, value]) => value.kinde)
+    if (hasKindeRouteRules) {
       addServerHandler({
         route: options.endpoints!.access!,
         handler:
@@ -167,6 +168,10 @@ export default defineNuxtModule<ModuleOptions>({
           || resolver.resolve('./runtime/server/api/access.post'),
       })
     }
+    addTemplate({
+      filename: 'kinde-route-rules.mjs',
+      getContents: () => `export const hasKindeRouteRules = ${hasKindeRouteRules}`,
+    })
 
     // Composables
     addImports({ name: 'useAuth', as: 'useAuth', from: resolver.resolve('./runtime/composables') })
