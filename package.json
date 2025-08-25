@@ -48,7 +48,7 @@
     "@nuxt/module-builder": "1.0.2",
     "@nuxt/schema": "4.0.3",
     "@nuxt/test-utils": "3.19.2",
-    "@types/node": "22.17.2",
+    "@types/node": "22.18.0",
     "@vue/test-utils": "2.4.6",
     "changelogen": "0.6.2",
     "eslint": "9.34.0",
