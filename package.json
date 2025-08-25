@@ -43,7 +43,7 @@
     "pathe": "^2.0.0"
   },
   "devDependencies": {
-    "@nuxt/devtools": "2.6.2",
+    "@nuxt/devtools": "2.6.3",
     "@nuxt/eslint-config": "1.9.0",
     "@nuxt/module-builder": "1.0.2",
     "@nuxt/schema": "4.0.3",
@@ -56,7 +56,7 @@
     "nuxt": "4.0.3",
     "typescript": "5.9.2",
     "vitest": "3.2.4",
-    "vue-tsc": "3.0.5"
+    "vue-tsc": "3.0.6"
   },
   "resolutions": {
     "@nuxt/schema": "4.0.3",
