@@ -3,9 +3,9 @@
   "name": "nuxt-kinde-playground",
   "type": "module",
   "scripts": {
-    "dev": "nuxi dev",
-    "build": "nuxi build",
-    "generate": "nuxi generate"
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate"
   },
   "devDependencies": {
     "@nuxt/devtools": "2.6.3",
