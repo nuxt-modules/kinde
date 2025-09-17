@@ -107,26 +107,25 @@ The current logged in user state, or null if the user is not logged in.
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Generate type stubs
-npm run dev:prepare
+pnpm dev:prepare
 
 # Develop with the playground
-npm run dev
+pnpm dev
 
 # Build the playground
-npm run dev:build
+pnpm dev:build
 
 # Run ESLint
-npm run lint
+pnpm lint
 
 # Run Vitest
-npm run test
-npm run test:watch
+pnpm test
 
 # Release new version
-npm run release
+pnpm release
 ```
 
 <!-- Badges -->
