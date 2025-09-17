@@ -50,12 +50,12 @@ async function createSessionManager(event: H3Event): Promise<SessionManager> {
 
   return {
     async getSessionItem(itemKey) {
-      const session = await getSession(event, sessionConfig)
+      const session = await getSession(event, { ...sessionConfig, name: itemKey })
       return session.data[itemKey] || memorySession[itemKey]
     },
     async setSessionItem(itemKey, itemValue) {
       if (keysInCookie.includes(itemKey)) {
-        await updateSession(event, sessionConfig, {
+        await updateSession(event, { ...sessionConfig, name: itemKey }, {
           [itemKey]: itemValue,
         })
       }
@@ -65,9 +65,7 @@ async function createSessionManager(event: H3Event): Promise<SessionManager> {
     },
     async removeSessionItem(itemKey) {
       if (keysInCookie.includes(itemKey)) {
-        await updateSession(event, sessionConfig, {
-          [itemKey]: undefined,
-        })
+        await clearSession(event, { ...sessionConfig, name: itemKey })
       }
       else {
         // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
@@ -79,7 +77,9 @@ async function createSessionManager(event: H3Event): Promise<SessionManager> {
         // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
         delete memorySession[key]
       }
-      await clearSession(event, sessionConfig)
+      for (const key of keysInCookie) {
+        await clearSession(event, { ...sessionConfig, name: key })
+      }
     },
   }
 }
