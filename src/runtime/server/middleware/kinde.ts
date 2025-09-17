@@ -77,9 +77,9 @@ async function createSessionManager(event: H3Event): Promise<SessionManager> {
         // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
         delete memorySession[key]
       }
-      keysInCookie.forEach(async (key) => {
+      for (const key of keysInCookie) {
         await clearSession(event, { ...sessionConfig, name: key })
-      })
+      }
     },
   }
 }
