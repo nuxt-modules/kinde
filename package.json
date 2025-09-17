@@ -1,6 +1,6 @@
 {
   "name": "@nuxtjs/kinde",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Nuxt integration for Kinde authentication",
   "repository": {
     "type": "git",
