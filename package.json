@@ -44,7 +44,7 @@
     "ufo": "^1.6.1"
   },
   "devDependencies": {
-    "@nuxt/devtools": "2.6.5",
+    "@nuxt/devtools": "2.7.0",
     "@nuxt/eslint-config": "1.9.0",
     "@nuxt/module-builder": "1.0.2",
     "@nuxt/schema": "4.2.0",
@@ -52,17 +52,17 @@
     "@types/node": "22.18.12",
     "@vue/test-utils": "2.4.6",
     "bumpp": "10.3.1",
-    "changelogithub": "13.16.0",
+    "changelogithub": "13.16.1",
     "eslint": "9.38.0",
     "happy-dom": "20.0.7",
     "nuxt": "4.2.0",
     "typescript": "5.9.3",
     "vitest": "3.2.4",
-    "vue-tsc": "3.1.1"
+    "vue-tsc": "3.1.2"
   },
   "resolutions": {
     "@nuxt/schema": "4.2.0",
     "@nuxtjs/kinde": "link:."
   },
-  "packageManager": "pnpm@10.18.3"
+  "packageManager": "pnpm@10.19.0"
 }
