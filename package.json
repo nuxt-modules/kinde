@@ -54,10 +54,10 @@
     "bumpp": "10.3.2",
     "changelogithub": "13.16.1",
     "eslint": "9.39.1",
-    "happy-dom": "20.0.10",
+    "happy-dom": "20.0.11",
     "nuxt": "4.2.1",
     "typescript": "5.9.3",
-    "vitest": "4.0.13",
+    "vitest": "4.0.14",
     "vue-tsc": "3.1.5"
   },
   "resolutions": {
