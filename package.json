@@ -64,5 +64,5 @@
     "@nuxt/schema": "4.2.2",
     "@nuxtjs/kinde": "link:."
   },
-  "packageManager": "pnpm@10.26.2"
+  "packageManager": "pnpm@10.27.0"
 }
