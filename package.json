@@ -54,7 +54,7 @@
     "bumpp": "10.3.2",
     "changelogithub": "14.0.0",
     "eslint": "9.39.2",
-    "happy-dom": "20.0.11",
+    "happy-dom": "20.1.0",
     "nuxt": "4.2.2",
     "typescript": "5.9.3",
     "vitest": "4.0.16",
