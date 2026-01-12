@@ -57,7 +57,7 @@
     "happy-dom": "20.1.0",
     "nuxt": "4.2.2",
     "typescript": "5.9.3",
-    "vitest": "4.0.16",
+    "vitest": "4.0.17",
     "vue-tsc": "3.2.2"
   },
   "resolutions": {
