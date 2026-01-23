@@ -6,6 +6,7 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
+[![nuxt.care health](https://img.shields.io/endpoint?url=https://nuxt.care/api/badge/kinde)](https://nuxt.care/?search=kinde)
 
 [Kinde](https://kinde.com/) integration for [Nuxt](https://nuxt.com).
 
