@@ -131,11 +131,11 @@ pnpm release
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/@nuxtjs/kinde/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-version-href]: https://npmjs.com/package/@nuxtjs/kinde
-[npm-downloads-src]: https://img.shields.io/npm/dm/@nuxtjs/kinde.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-src]: https://npmx.dev/api/registry/badge/version/@nuxtjs/kinde
+[npm-version-href]: https://npmx.dev/package/@nuxtjs/kinde
+[npm-downloads-src]: https://npmx.dev/api/registry/badge/downloads/@nuxtjs/kinde
 [npm-downloads-href]: https://npm.chart.dev/@nuxtjs/kinde
-[license-src]: https://img.shields.io/npm/l/@nuxtjs/kinde.svg?style=flat&colorA=18181B&colorB=28CF8D
-[license-href]: https://npmjs.com/package/@nuxtjs/kinde
+[license-src]: https://npmx.dev/api/registry/badge/license/@nuxtjs/kinde
+[license-href]: https://npmx.dev/package/@nuxtjs/kinde
 [nuxt-src]: https://img.shields.io/badge/Nuxt-18181B?logo=nuxt.js
 [nuxt-href]: https://nuxt.com
