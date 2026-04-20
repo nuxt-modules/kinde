@@ -56,9 +56,9 @@
     "eslint": "10.2.0",
     "happy-dom": "20.9.0",
     "nuxt": "4.4.2",
-    "typescript": "6.0.2",
+    "typescript": "6.0.3",
     "vitest": "4.1.4",
-    "vue-tsc": "3.2.6"
+    "vue-tsc": "3.2.7"
   },
   "resolutions": {
     "@nuxt/schema": "4.4.2",
