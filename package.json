@@ -48,7 +48,7 @@
     "@nuxt/eslint-config": "1.15.2",
     "@nuxt/module-builder": "1.0.2",
     "@nuxt/schema": "4.4.2",
-    "@nuxt/test-utils": "4.0.0",
+    "@nuxt/test-utils": "4.0.2",
     "@types/node": "24.12.2",
     "@vue/test-utils": "2.4.6",
     "bumpp": "11.0.1",
