@@ -50,7 +50,7 @@
     "@nuxt/schema": "4.4.2",
     "@nuxt/test-utils": "4.0.2",
     "@types/node": "24.12.2",
-    "@vue/test-utils": "2.4.6",
+    "@vue/test-utils": "2.4.8",
     "bumpp": "11.0.1",
     "changelogithub": "14.0.0",
     "eslint": "10.2.1",
@@ -64,5 +64,5 @@
     "@nuxt/schema": "4.4.2",
     "@nuxtjs/kinde": "link:."
   },
-  "packageManager": "pnpm@10.33.0"
+  "packageManager": "pnpm@10.33.2"
 }
