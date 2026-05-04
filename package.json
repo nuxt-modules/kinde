@@ -50,7 +50,7 @@
     "@nuxt/schema": "4.4.4",
     "@nuxt/test-utils": "4.0.3",
     "@types/node": "24.12.2",
-    "@vue/test-utils": "2.4.9",
+    "@vue/test-utils": "2.4.10",
     "bumpp": "11.0.1",
     "changelogithub": "14.0.0",
     "eslint": "10.2.1",
