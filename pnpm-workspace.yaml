@@ -7,5 +7,5 @@ allowBuilds:
   unrs-resolver: false
 
 overrides:
-  "@nuxt/schema": "4.4.5"
+  "@nuxt/schema": "4.4.6"
   "@nuxtjs/kinde": "link:."
