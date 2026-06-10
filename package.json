@@ -50,8 +50,8 @@
     "@nuxt/module-builder": "1.0.2",
     "@nuxt/schema": "4.4.8",
     "@nuxt/test-utils": "4.0.3",
-    "@types/node": "24.12.4",
-    "@vue/test-utils": "2.4.10",
+    "@types/node": "24.13.1",
+    "@vue/test-utils": "2.4.11",
     "bumpp": "11.1.0",
     "changelogithub": "14.0.0",
     "eslint": "10.4.1",
@@ -59,7 +59,7 @@
     "nuxt": "4.4.8",
     "typescript": "6.0.3",
     "vitest": "4.1.8",
-    "vue-tsc": "3.3.3"
+    "vue-tsc": "3.3.4"
   },
-  "packageManager": "pnpm@11.5.0"
+  "packageManager": "pnpm@11.5.2"
 }
