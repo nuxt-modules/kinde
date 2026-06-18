@@ -46,11 +46,11 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "3.2.4",
-    "@nuxt/eslint-config": "1.15.2",
+    "@nuxt/eslint-config": "1.16.0",
     "@nuxt/module-builder": "1.0.2",
     "@nuxt/schema": "4.4.8",
     "@nuxt/test-utils": "4.0.3",
-    "@types/node": "24.13.1",
+    "@types/node": "24.13.2",
     "@vue/test-utils": "2.4.11",
     "bumpp": "11.1.0",
     "changelogithub": "14.0.0",
@@ -59,7 +59,7 @@
     "nuxt": "4.4.8",
     "typescript": "6.0.3",
     "vitest": "4.1.9",
-    "vue-tsc": "3.3.4"
+    "vue-tsc": "3.3.5"
   },
-  "packageManager": "pnpm@11.5.2"
+  "packageManager": "pnpm@11.8.0"
 }
