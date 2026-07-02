@@ -54,7 +54,7 @@
     "@vue/test-utils": "2.4.11",
     "bumpp": "11.1.0",
     "changelogithub": "14.0.0",
-    "eslint": "10.5.0",
+    "eslint": "10.6.0",
     "happy-dom": "20.10.6",
     "nuxt": "4.4.8",
     "typescript": "6.0.3",
