@@ -52,14 +52,14 @@
     "@nuxt/test-utils": "4.1.0",
     "@types/node": "24.13.3",
     "@vue/test-utils": "2.4.11",
-    "bumpp": "12.2.0",
+    "bumpp": "12.2.1",
     "changelogithub": "15.0.4",
     "eslint": "10.8.1",
     "happy-dom": "20.11.2",
     "nuxt": "4.5.2",
     "typescript": "6.0.3",
     "vitest": "4.1.10",
-    "vue-tsc": "3.3.9"
+    "vue-tsc": "3.3.10"
   },
-  "packageManager": "pnpm@11.21.0"
+  "packageManager": "pnpm@11.22.0"
 }
