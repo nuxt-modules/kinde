@@ -55,10 +55,10 @@
     "bumpp": "12.2.1",
     "changelogithub": "15.0.4",
     "eslint": "10.8.1",
-    "happy-dom": "20.11.2",
+    "happy-dom": "20.11.6",
     "nuxt": "4.5.2",
     "typescript": "6.0.3",
-    "vitest": "4.1.10",
+    "vitest": "4.1.11",
     "vue-tsc": "3.3.11"
   },
   "packageManager": "pnpm@11.22.0"
