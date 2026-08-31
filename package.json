@@ -51,9 +51,9 @@
     "@nuxt/schema": "4.5.2",
     "@nuxt/test-utils": "4.2.0",
     "@types/node": "24.13.3",
-    "@vue/test-utils": "2.4.11",
-    "bumpp": "12.2.1",
-    "changelogithub": "15.0.4",
+    "@vue/test-utils": "2.5.0",
+    "bumpp": "12.2.2",
+    "changelogithub": "15.0.5",
     "eslint": "10.9.0",
     "happy-dom": "20.11.6",
     "nuxt": "4.5.2",
@@ -61,5 +61,5 @@
     "vitest": "4.1.11",
     "vue-tsc": "3.3.11"
   },
-  "packageManager": "pnpm@11.22.0"
+  "packageManager": "pnpm@11.24.0"
 }
