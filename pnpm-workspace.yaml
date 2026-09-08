@@ -8,4 +8,4 @@ allowBuilds:
 
 overrides:
   "@nuxt/schema": "4.5.2"
-  "@nuxtjs/kinde": "link:."
+  "@nuxtjs/kinde": "workspace:*"
