@@ -1,11 +1,10 @@
-import { defineEventHandler, sendRedirect, getQuery } from 'h3'
+import { defineEventHandler, sendRedirect, getQuery, useRuntimeConfig } from 'nuxt/server'
 import { PortalPage } from '@kinde-oss/kinde-typescript-sdk'
 import { getKindeClient } from '../utils/client'
-import { useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(async (event) => {
   const { kinde: kindeSettings } = useRuntimeConfig()
-  const query: Record<string, string> = getQuery(event)
+  const query = getQuery<Record<string, string>>(event)
 
   const sessionManager = event.context.kinde.sessionManager
 
@@ -14,5 +13,5 @@ export default defineEventHandler(async (event) => {
     domain: kindeSettings.authDomain,
     returnUrl: query.returnUrl || kindeSettings.redirectURL,
   })
-  await sendRedirect(event, loginURL.url.toString())
+  return sendRedirect(event, loginURL.url.toString())
 })

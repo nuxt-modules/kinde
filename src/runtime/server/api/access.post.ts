@@ -1,12 +1,10 @@
-import { defineEventHandler, readBody } from 'h3'
-import { getRouteRulesForPath } from 'nitropack/runtime/internal/route-rules'
+import { defineEventHandler, matchRouteRules, readBody } from 'nuxt/server'
 
-import type { NitroRouteRules } from 'nitropack'
 import type { AccessResponse } from '../../types'
 
 export default defineEventHandler(async (event): Promise<AccessResponse> => {
-  const { path } = await readBody(event)
-  const routeRules = await getRouteRulesForPath(path).kinde as NitroRouteRules['kinde']
+  const { path } = await readBody<{ path: string }>(event)
+  const routeRules = matchRouteRules(path).kinde
 
   // No rules defined or route is public - allow access
   if (!routeRules || routeRules.public) {
