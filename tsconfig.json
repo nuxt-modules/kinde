@@ -4,6 +4,8 @@
     "dist",
     "node_modules",
     "playground",
+    "playground-v5",
+    "test/fixtures",
     "src/runtime/server"
   ]
 }

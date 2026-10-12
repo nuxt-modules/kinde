@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "name": "nuxt-kinde-fixture-v5",
+  "type": "module",
+  "devDependencies": {
+    "@nuxtjs/kinde": "latest",
+    "nuxt": "npm:nuxt-nightly@5x"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "nuxt-kinde-playground-v5",
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate"
+  },
+  "devDependencies": {
+    "@nuxtjs/kinde": "latest",
+    "nuxt": "npm:nuxt-nightly@5x",
+    "vue": "3.5.43",
+    "vue-router": "5.3.1"
+  }
+}

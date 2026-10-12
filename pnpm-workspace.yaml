@@ -1,11 +1,16 @@
 packages:
   - "playground"
+  - "playground-v5"
+  - "test/fixtures/*"
 
 allowBuilds:
   '@parcel/watcher': false
   esbuild: false
   unrs-resolver: false
 
+minimumReleaseAgeExclude:
+  - '@nuxt/*'
+  - nuxt-nightly
+
 overrides:
-  "@nuxt/schema": "4.6.1"
   "@nuxtjs/kinde": "workspace:*"

@@ -1,11 +1,9 @@
-import type { H3Event, SessionConfig } from 'h3'
 import type { SessionManager } from '@kinde-oss/kinde-typescript-sdk'
-import type { CookieSerializeOptions } from 'cookie-es'
-import { defineEventHandler } from 'h3'
+import type { RequestEvent, SessionConfig } from 'nuxt/server'
+import { clearSession, defineEventHandler, getSession, updateSession, useRuntimeConfig } from 'nuxt/server'
 
 import { getKindeClient } from '../utils/client'
 import type { KindeContext } from '../../types'
-import { getSession, updateSession, clearSession, useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(async (event) => {
   const sessionManager = await createSessionManager(event)
@@ -36,15 +34,15 @@ export default defineEventHandler(async (event) => {
   event.context.kinde = kindeContext
 })
 
-async function createSessionManager(event: H3Event): Promise<SessionManager> {
+async function createSessionManager(event: Pick<RequestEvent, 'req' | 'res'>): Promise<SessionManager> {
   // TODO: improve memory session in future
   const keysInCookie = ['refresh_token', 'access_token', 'id_token', 'ac-state-key', 'post-login-redirect-url']
   const memorySession: Record<(typeof keysInCookie)[number], unknown> = {}
 
-  const config = useRuntimeConfig(event)
+  const config = useRuntimeConfig()
   const sessionConfig = {
     name: 'kinde',
-    cookie: config.kinde.cookie as CookieSerializeOptions,
+    cookie: config.kinde.cookie as SessionConfig['cookie'],
     password: config.kinde.password,
   } satisfies SessionConfig
 

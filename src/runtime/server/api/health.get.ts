@@ -1,6 +1,5 @@
-import { defineEventHandler } from 'h3'
+import { defineEventHandler, useRuntimeConfig } from 'nuxt/server'
 import { validateClientSecret } from '@kinde-oss/kinde-typescript-sdk'
-import { useRuntimeConfig } from '#imports'
 
 export default defineEventHandler(() => {
   const { kinde } = useRuntimeConfig()

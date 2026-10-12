@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import { readFile, writeFile } from 'node:fs/promises'
 
-import { addServerHandler, defineNuxtModule, addPlugin, createResolver, addRouteMiddleware, addImports, addComponent, addTemplate, addTypeTemplate } from '@nuxt/kit'
+import { addServerHandler, defineNuxtModule, addPlugin, createResolver, addRouteMiddleware, addImports, addComponent, addTemplate, addTypeTemplate, resolveServerVariant } from '@nuxt/kit'
 import { defu } from 'defu'
 import type { CookieSerializeOptions } from 'cookie-es'
 import { join } from 'pathe'
@@ -112,28 +112,43 @@ export default defineNuxtModule<ModuleOptions>({
     addPlugin(resolver.resolve('./runtime/plugin'))
 
     // Server endpoints
+    const kindeMiddleware = {
+      nuxt: resolver.resolve('./runtime/server/middleware/kinde'),
+      nitro2: resolver.resolve('./runtime/server/middleware/kinde.legacy'),
+    }
     addServerHandler({
       middleware: true,
-      handler: resolver.resolve('./runtime/server/middleware/kinde'),
+      // nitropack v2 mounts routed middleware as a path prefix, so it only runs globally without a route
+      route: resolveServerVariant(kindeMiddleware) === kindeMiddleware.nitro2 ? undefined : '/**',
+      handler: kindeMiddleware,
     })
 
     addServerHandler({
       route: options.endpoints!.callback!,
       handler:
         options.handlers?.callback
-        || resolver.resolve('./runtime/server/api/callback.get'),
+        || {
+          nuxt: resolver.resolve('./runtime/server/api/callback.get'),
+          nitro2: resolver.resolve('./runtime/server/api/callback.get.legacy'),
+        },
     })
     addServerHandler({
       route: options.endpoints!.login!,
       handler:
         options.handlers?.login
-        || resolver.resolve('./runtime/server/api/login.get'),
+        || {
+          nuxt: resolver.resolve('./runtime/server/api/login.get'),
+          nitro2: resolver.resolve('./runtime/server/api/login.get.legacy'),
+        },
     })
     addServerHandler({
       route: options.endpoints!.register!,
       handler:
         options.handlers?.register
-        || resolver.resolve('./runtime/server/api/register.get'),
+        || {
+          nuxt: resolver.resolve('./runtime/server/api/register.get'),
+          nitro2: resolver.resolve('./runtime/server/api/register.get.legacy'),
+        },
     })
 
     if (options.debug) {
@@ -141,7 +156,10 @@ export default defineNuxtModule<ModuleOptions>({
         route: options.endpoints!.health!,
         handler:
           options.handlers?.health
-          || resolver.resolve('./runtime/server/api/health.get'),
+          || {
+            nuxt: resolver.resolve('./runtime/server/api/health.get'),
+            nitro2: resolver.resolve('./runtime/server/api/health.get.legacy'),
+          },
       })
     }
 
@@ -149,14 +167,20 @@ export default defineNuxtModule<ModuleOptions>({
       route: options.endpoints!.logout!,
       handler:
         options.handlers?.logout
-        || resolver.resolve('./runtime/server/api/logout.get'),
+        || {
+          nuxt: resolver.resolve('./runtime/server/api/logout.get'),
+          nitro2: resolver.resolve('./runtime/server/api/logout.get.legacy'),
+        },
     })
 
     addServerHandler({
       route: options.endpoints!.portal!,
       handler:
         options.handlers?.portal
-        || resolver.resolve('./runtime/server/api/portal.get'),
+        || {
+          nuxt: resolver.resolve('./runtime/server/api/portal.get'),
+          nitro2: resolver.resolve('./runtime/server/api/portal.get.legacy'),
+        },
     })
 
     const hasKindeRouteRules = Object.entries(nuxt.options.routeRules || {}).some(([_, value]) => value.kinde)
@@ -165,7 +189,10 @@ export default defineNuxtModule<ModuleOptions>({
         route: options.endpoints!.access!,
         handler:
           options.handlers?.access
-          || resolver.resolve('./runtime/server/api/access.post'),
+          || {
+            nuxt: resolver.resolve('./runtime/server/api/access.post'),
+            nitro2: resolver.resolve('./runtime/server/api/access.post.legacy'),
+          },
       })
     }
     addTemplate({
@@ -222,6 +249,18 @@ type KindeRouteRules = {
 declare module 'h3' {
   interface H3EventContext {
     kinde: KindeContext
+  }
+}
+
+declare module 'nuxt/schema' {
+  interface RequestEventContext {
+    kinde: KindeContext
+  }
+  interface RouteRuleConfigExtensions {
+    kinde?: KindeRouteRules
+  }
+  interface AppRouteRulesExtensions {
+    kinde?: KindeRouteRules
   }
 }
 

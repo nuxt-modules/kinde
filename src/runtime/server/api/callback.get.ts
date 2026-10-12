@@ -1,10 +1,8 @@
-import { defineEventHandler, getRequestURL, sendRedirect } from 'h3'
+import { defineEventHandler, getRequestURL, sendRedirect, useRuntimeConfig } from 'nuxt/server'
 import { getKindeClient } from '../utils/client'
-import { useRuntimeConfig } from '#imports'
-
-const config = useRuntimeConfig()
 
 export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig()
   const sessionManager = event.context.kinde.sessionManager
 
   await getKindeClient().handleRedirectToApp(
@@ -16,9 +14,8 @@ export default defineEventHandler(async (event) => {
 
   if (postLoginRedirectURL) {
     await sessionManager.removeSessionItem('post-login-redirect-url')
-    await sendRedirect(event, postLoginRedirectURL)
-    return
+    return sendRedirect(event, postLoginRedirectURL)
   }
 
-  await sendRedirect(event, config.kinde.postLoginRedirectURL || '/')
+  return sendRedirect(event, config.kinde.postLoginRedirectURL || '/')
 })
