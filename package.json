@@ -61,7 +61,7 @@
     "nuxt": "4.6.3",
     "typescript": "6.0.3",
     "vitest": "5.0.5",
-    "vue-tsc": "3.3.13"
+    "vue-tsc": "3.3.14"
   },
   "devEngines": {
     "runtime": {
@@ -71,7 +71,7 @@
     },
     "packageManager": {
       "name": "pnpm",
-      "version": "12.16.0",
+      "version": "12.16.1",
       "onFail": "download"
     }
   }
