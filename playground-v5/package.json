@@ -11,6 +11,6 @@
     "@nuxtjs/kinde": "latest",
     "nuxt": "npm:nuxt-nightly@5x",
     "vue": "3.5.45",
-    "vue-router": "5.4.0"
+    "vue-router": "5.5.1"
   }
 }
