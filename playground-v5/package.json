@@ -10,7 +10,7 @@
   "devDependencies": {
     "@nuxtjs/kinde": "latest",
     "nuxt": "npm:nuxt-nightly@5x",
-    "vue": "3.5.45",
+    "vue": "3.5.46",
     "vue-router": "5.5.1"
   }
 }
